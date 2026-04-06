@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Szkoła Językowa — StartSmart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body class="layout">
+
+  <header class="layout__header header" id="top">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="header__logo">Start<span>Smart</span></a>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link">Головна</a></li>
+            <li class="nav__item"><a href="english_school.html#about" class="nav__link">Про школу</a></li>
+            <li class="nav__item"><a href="english_school.html#courses" class="nav__link">Наші курси</a></li>
+            <li class="nav__item"><a href="english_school.html#methods" class="nav__link">Види навчання</a></li>
+            <li class="nav__item"><a href="english_school.html#rates" class="nav__link">Ціни</a></li>
+            <li class="nav__item"><a href="english_school.html#teachers" class="nav__link">Викладачі</a></li>
+            <li class="nav__item"><a href="english_school.html#questions" class="nav__link">Питання</a></li>
+          </ul>
+        </nav>
+        <div class="header__socials">
+          <a href="https://www.facebook.com/startsmartplt" class="header__social-link header__social-link--fb" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://t.me/startsmart_world" class="header__social-link header__social-link--telegram" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="https://instagram.com/startsmart_world" class="header__social-link header__social-link--instagram" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white"/></svg>
+          </a>
+        </div>
+        <button class="header__burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрити">✕</button>
+    <a href="index.html" class="mobile-menu__link">Головна</a>
+    <a href="english_school.html#about" class="mobile-menu__link">Про школу</a>
+    <a href="english_school.html#courses" class="mobile-menu__link">Наші курси</a>
+    <a href="english_school.html#methods" class="mobile-menu__link">Види навчання</a>
+    <a href="english_school.html#rates" class="mobile-menu__link">Ціни</a>
+    <a href="english_school.html#teachers" class="mobile-menu__link">Викладачі</a>
+    <a href="english_school.html#questions" class="mobile-menu__link">Питання</a>
+  </nav>
+
+  <main class="layout__main" id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" id="start">
+      <div class="hero__bg" style="background-image:url('https://static.tildacdn.one/tild3136-3532-4338-b665-383533326138/Hat.jpg');"></div>
+      <div class="hero__overlay" style="background:rgba(101,185,168,0.55);"></div>
+      <div class="hero__content container">
+        <h1 class="hero__title">Szkoła Językowa</h1>
+        <p class="hero__subtitle">Jesteśmy małą szkołą językową! Lekcje dla każdego poziomu od A0 do C1</p>
+        <a href="#offer" class="hero__cta">Co oferujemy?</a>
+      </div>
+    </section>
+
+    <!-- OFFER -->
+    <section class="section about" id="offer">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__content">
+            <p class="about__label">Nasza oferta</p>
+            <h2 class="about__title">Co oferujemy?</h2>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Lekcje ukraińskiego, rosyjskiego, angielskiego i polskiego dla cudzoziemców</span></li>
+              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Lekcje na każdym poziomie od A0 do C1</span></li>
+              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Lekcje z native speakerami</span></li>
+              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Indywidualne i grupowe lekcje on-line</span></li>
+              <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Dla dzieci i dorosłych</span></li>
+            </ul>
+            <p class="about__text">Zachęcamy do pierwszej próbnej lekcji dla ustalenia poziomu i omówienia szczegółów. Proponujemy wolne terminy zajęć przez Skype / Zoom / Teams.</p>
+            <p class="about__text">Proszę o kontakt przez email lub WhatsApp. <strong>Welcome! :)</strong></p>
+          </div>
+          <div class="about__image">
+            <img src="https://static.tildacdn.one/tild3065-3237-4337-a462-363531396234/berdPink.png" alt="Szkoła językowa"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RATES -->
+    <section class="section rates" id="rates">
+      <div class="container">
+        <h2 class="rates__title">ЦІНИ / CENY</h2>
+        <div class="rates__grid">
+          <div class="rate-card">
+            <h3 class="rate-card__name">Lekcje indywidualne</h3>
+            <p class="rate-card__duration">60 хв / 60 min</p>
+            <p class="rate-card__price">50 zł</p>
+            <p class="rate-card__per">za godzinę</p>
+            <a href="#contact" class="rate-card__btn">Записатися</a>
+          </div>
+          <div class="rate-card rate-card--featured">
+            <h3 class="rate-card__name">Lekcje parne</h3>
+            <p class="rate-card__duration">60 хв / 60 min</p>
+            <p class="rate-card__price">35 zł</p>
+            <p class="rate-card__per">za godzinę / od osoby</p>
+            <a href="#contact" class="rate-card__btn">Записатися</a>
+          </div>
+          <div class="rate-card">
+            <h3 class="rate-card__name">Lekcje grupowe</h3>
+            <p class="rate-card__duration">80–90 хв / min</p>
+            <p class="rate-card__price">od 20 zł</p>
+            <p class="rate-card__per">za godzinę / od osoby</p>
+            <a href="#contact" class="rate-card__btn">Записатися</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHERS -->
+    <section class="section teachers" id="teachers">
+      <div class="container">
+        <h2 class="teachers__title">Poznaj naszych lektorów</h2>
+        <div class="teachers__grid">
+          <div class="teacher-card">
+            <img class="teacher-card__photo" src="https://static.tildacdn.one/tild6536-3861-4564-b539-383133376431/Hat.jpg" alt="Evgenia"/>
+            <h3 class="teacher-card__name">EVGENIA</h3>
+            <p class="teacher-card__quote">„Organizuję przyjemną i produktywną pracę w grupach".</p>
+            <p class="teacher-card__info">Native-speaker ukraińskiego · 3 lata doświadczenia · Uczy dzieci, młodzież i dorosłych · Dyplomowany nauczyciel języka polskiego i ukraińskiego · Wykształcenie wyższe filologiczne i coachingowe</p>
+          </div>
+          <div class="teacher-card">
+            <img class="teacher-card__photo" src="https://static.tildacdn.one/tild3465-6633-4162-a164-663566653632/berdPink.png" alt="Svitlana"/>
+            <h3 class="teacher-card__name">SVITLANA</h3>
+            <p class="teacher-card__quote">BIZNES COACH, LEKTORKA JĘZYKA ANGIELSKIEGO, POLSKIEGO, UKRAIŃSKIEGO I ROSYJSKIEGO.</p>
+            <p class="teacher-card__info">Założycielka szkoły Start-Smart · Posiada doświadczenie w nauczaniu w środowisku międzynarodowym (korporacje brytyjskie i amerykańskie) · Opracowała skuteczną metodę nauki języka</p>
+          </div>
+          <div class="teacher-card">
+            <img class="teacher-card__photo" src="https://static.tildacdn.one/tild3136-3532-4338-b665-383533326138/Hat.jpg" alt="Anastazja"/>
+            <h3 class="teacher-card__name">ANASTAZJA</h3>
+            <p class="teacher-card__quote">„Pomogę Ci nauczyć się języka w najprostszy dla Ciebie sposób".</p>
+            <p class="teacher-card__info">Poziom języka angielskiego C1 · 2 lata doświadczenia · Uczy dzieci i młodzież · Certyfikowany nauczyciel języka angielskiego i ukraińskiego</p>
+          </div>
+          <div class="teacher-card">
+            <img class="teacher-card__photo" src="https://static.tildacdn.one/tild3136-3532-4338-b665-383533326138/Hat.jpg" alt="Valeriya"/>
+            <h3 class="teacher-card__name">VALERIYA</h3>
+            <p class="teacher-card__quote">„Nasze lekcje układam indywidualnie, dostosowując je do potrzeb ucznia".</p>
+            <p class="teacher-card__info">Native-speaker ukraińskiego · 3 lata doświadczenia · Uczy dzieci, młodzież i dorosłych · Dyplomowany nauczyciel języka polskiego i ukraińskiego</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__info">
+            <h2 class="contact__title">Kontakt / Зв'яжіться</h2>
+            <p class="contact__text">Pytania? Napisz do nas! Zawsze chętnie odpowiemy.</p>
+            <div class="contact__channels">
+              <a href="https://t.me/startsmart_world" class="contact__channel" target="_blank" rel="noopener">
+                <img src="https://static.tildacdn.one/tild3139-3365-4065-b837-663861333863/telegramm.jpg" alt="Telegram"/>
+                <span>Telegram</span>
+              </a>
+              <a href="mailto:startsmart.poltava@gmail.com" class="contact__channel">
+                <span>📧</span><span>startsmart.poltava@gmail.com</span>
+              </a>
+            </div>
+          </div>
+          <form class="form" action="#" method="post">
+            <h3 class="form__title">Zapisz się / Записатися</h3>
+            <div class="form__group">
+              <label class="form__label" for="pl-name">Imię / Ім'я</label>
+              <input class="form__input" type="text" id="pl-name" name="name" placeholder="Jan / Іван" required/>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="pl-phone">Telefon / WhatsApp</label>
+              <input class="form__input" type="text" id="pl-phone" name="phone" placeholder="+48..."/>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="pl-msg">Wiadomość / Повідомлення</label>
+              <textarea class="form__textarea" id="pl-msg" name="message" placeholder="Poziom, cele, preferowany termin..."></textarea>
+            </div>
+            <button class="form__btn" type="submit">Wyślij / Надіслати</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="layout__footer footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="index.html" class="footer__logo">StartSmart</a>
+        <p class="footer__copy">© 2024 StartSmart. Всі права захищені. <a href="mailto:startsmart.poltava@gmail.com">startsmart.poltava@gmail.com</a></p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/startsmartplt" class="footer__social-link" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://t.me/startsmart_world" class="footer__social-link" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="https://instagram.com/startsmart_world" class="footer__social-link" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    if(burger) burger.addEventListener('click', () => { mobileMenu.classList.add('mobile-menu--open'); mobileMenu.setAttribute('aria-hidden','false'); });
+    if(closeBtn) closeBtn.addEventListener('click', () => { mobileMenu.classList.remove('mobile-menu--open'); mobileMenu.setAttribute('aria-hidden','true'); });
+    document.querySelectorAll('.faq-item__question').forEach(q => {
+      q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('faq-item--open'));
+    });
+  </script>
+</body>
+</html>

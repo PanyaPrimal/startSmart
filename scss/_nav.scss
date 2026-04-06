@@ -1,0 +1,50 @@
+.nav {
+  &__list { display: flex; align-items: center; gap: 28px; }
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-text;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.2s;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background-color: $color-pink;
+      transition: width 0.25s ease;
+    }
+    &:hover { color: $color-pink; &::after { width: 100%; } }
+    &--active { color: $color-pink; &::after { width: 100%; } }
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 280px; height: 100%;
+  background-color: $color-pink;
+  z-index: 200;
+  padding: 60px 30px 30px;
+  flex-direction: column;
+  gap: 24px;
+  &--open { display: flex; }
+  &__close {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 24px;
+    color: $color-white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  &__link {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-white;
+    transition: opacity 0.2s;
+    &:hover { opacity: 0.75; }
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Головна — StartSmart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body class="layout">
+
+  <header class="layout__header header" id="top">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="header__logo">Start<span>Smart</span></a>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link">Головна</a></li>
+            <li class="nav__item"><a href="english_school.html#about" class="nav__link">Про школу</a></li>
+            <li class="nav__item"><a href="english_school.html#courses" class="nav__link">Наші курси</a></li>
+            <li class="nav__item"><a href="english_school.html#methods" class="nav__link">Види навчання</a></li>
+            <li class="nav__item"><a href="english_school.html#rates" class="nav__link">Ціни</a></li>
+            <li class="nav__item"><a href="english_school.html#teachers" class="nav__link">Викладачі</a></li>
+            <li class="nav__item"><a href="english_school.html#questions" class="nav__link">Питання</a></li>
+          </ul>
+        </nav>
+        <div class="header__socials">
+          <a href="https://www.facebook.com/startsmartplt" class="header__social-link header__social-link--fb" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://t.me/startsmart_world" class="header__social-link header__social-link--telegram" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="https://instagram.com/startsmart_world" class="header__social-link header__social-link--instagram" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white"/></svg>
+          </a>
+        </div>
+        <button class="header__burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрити">✕</button>
+    <a href="index.html" class="mobile-menu__link">Головна</a>
+    <a href="english_school.html#about" class="mobile-menu__link">Про школу</a>
+    <a href="english_school.html#courses" class="mobile-menu__link">Наші курси</a>
+    <a href="english_school.html#methods" class="mobile-menu__link">Види навчання</a>
+    <a href="english_school.html#rates" class="mobile-menu__link">Ціни</a>
+    <a href="english_school.html#teachers" class="mobile-menu__link">Викладачі</a>
+    <a href="english_school.html#questions" class="mobile-menu__link">Питання</a>
+  </nav>
+
+  <main class="layout__main" id="main-content">
+
+    <section class="quick-menu">
+      <img class="quick-menu__deco quick-menu__deco--tl" src="https://static.tildacdn.one/tild3535-3739-4665-b436-656362626636/GreenHat.png" alt="" aria-hidden="true"/>
+      <img class="quick-menu__deco quick-menu__deco--tr" src="https://static.tildacdn.one/tild6335-3130-4562-b532-326565376331/Hat.png" alt="" aria-hidden="true"/>
+      <img class="quick-menu__deco quick-menu__deco--bl" src="https://static.tildacdn.one/tild3965-3938-4734-a430-373466353634/GreenHat.png" alt="" aria-hidden="true"/>
+      <img class="quick-menu__deco quick-menu__deco--br" src="https://static.tildacdn.one/tild6162-6437-4164-a433-343565313839/Hat.png" alt="" aria-hidden="true"/>
+      <h1 class="quick-menu__title">Welcome to StartSmart</h1>
+      <div class="quick-menu__grid">
+        <a href="english_school.html" class="quick-menu__btn quick-menu__btn--pink">English School</a>
+        <a href="polish.html" class="quick-menu__btn quick-menu__btn--teal">Szkoła Językowa</a>
+        <a href="https://t.me/startsmart_world" class="quick-menu__btn quick-menu__btn--teal" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://instagram.com/startsmart_world" class="quick-menu__btn quick-menu__btn--pink" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="layout__footer footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="index.html" class="footer__logo">StartSmart</a>
+        <p class="footer__copy">© 2024 StartSmart. Всі права захищені. <a href="mailto:startsmart.poltava@gmail.com">startsmart.poltava@gmail.com</a></p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/startsmartplt" class="footer__social-link" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://t.me/startsmart_world" class="footer__social-link" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="https://instagram.com/startsmart_world" class="footer__social-link" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    if(burger) burger.addEventListener('click', () => { mobileMenu.classList.add('mobile-menu--open'); mobileMenu.setAttribute('aria-hidden','false'); });
+    if(closeBtn) closeBtn.addEventListener('click', () => { mobileMenu.classList.remove('mobile-menu--open'); mobileMenu.setAttribute('aria-hidden','true'); });
+    document.querySelectorAll('.faq-item__question').forEach(q => {
+      q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('faq-item--open'));
+    });
+  </script>
+</body>
+</html>

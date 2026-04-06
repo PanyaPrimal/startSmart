@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Групові заняття — StartSmart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body class="layout">
+
+  <header class="layout__header header" id="top">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="header__logo">Start<span>Smart</span></a>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link">Головна</a></li>
+            <li class="nav__item"><a href="english_school.html#about" class="nav__link">Про школу</a></li>
+            <li class="nav__item"><a href="english_school.html#courses" class="nav__link">Наші курси</a></li>
+            <li class="nav__item"><a href="english_school.html#methods" class="nav__link">Види навчання</a></li>
+            <li class="nav__item"><a href="english_school.html#rates" class="nav__link">Ціни</a></li>
+            <li class="nav__item"><a href="english_school.html#teachers" class="nav__link">Викладачі</a></li>
+            <li class="nav__item"><a href="english_school.html#questions" class="nav__link">Питання</a></li>
+          </ul>
+        </nav>
+        <div class="header__socials">
+          <a href="https://www.facebook.com/startsmartplt" class="header__social-link header__social-link--fb" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://t.me/startsmart_world" class="header__social-link header__social-link--telegram" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="https://instagram.com/startsmart_world" class="header__social-link header__social-link--instagram" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white"/></svg>
+          </a>
+        </div>
+        <button class="header__burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрити">✕</button>
+    <a href="index.html" class="mobile-menu__link">Головна</a>
+    <a href="english_school.html#about" class="mobile-menu__link">Про школу</a>
+    <a href="english_school.html#courses" class="mobile-menu__link">Наші курси</a>
+    <a href="english_school.html#methods" class="mobile-menu__link">Види навчання</a>
+    <a href="english_school.html#rates" class="mobile-menu__link">Ціни</a>
+    <a href="english_school.html#teachers" class="mobile-menu__link">Викладачі</a>
+    <a href="english_school.html#questions" class="mobile-menu__link">Питання</a>
+  </nav>
+
+  <main class="layout__main" id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" id="start">
+      <div class="hero__bg" style="background-image:url('https://static.tildacdn.one/tild6132-6366-4439-b235-356261363566/1111.png'); background-color:#e17088;"></div>
+      <div class="hero__overlay" style="background:rgba(225,112,136,0.55);"></div>
+      <div class="hero__content container">
+        <h1 class="hero__title">ГРУПОВІ ЗАНЯТТЯ</h1>
+        <p class="hero__subtitle">3-4 учня + викладач / урок 80-90 хв. Жива атмосфера та різноманітна практика</p>
+        <a href="#rates" class="hero__cta">Дивитися ціни</a>
+      </div>
+    </section>
+
+    <!-- RATES — Світлана -->
+    <section class="section rates" id="rates">
+      <div class="container">
+        <h2 class="rates__title">ЦІНИ НА КУРСИ</h2>
+        <p style="text-align:center;margin-bottom:30px;font-size:15px;color:#888;">Ціна на навчання з викладачем Світлана</p>
+        <div class="rates__grid">
+          <div class="rate-card">
+            <h3 class="rate-card__name">ПЕРШИЙ УРОК</h3>
+            <p class="rate-card__duration">80–90 хв.</p>
+            <p class="rate-card__price">200 грн</p>
+            <p class="rate-card__per">за урок</p>
+            <a href="#contact" class="rate-card__btn">Записатися</a>
+          </div>
+          <div class="rate-card rate-card--featured">
+            <h3 class="rate-card__name">9 УРОКІВ</h3>
+            <p class="rate-card__duration">9 × 80 хв.</p>
+            <p class="rate-card__price">1600 грн</p>
+            <p class="rate-card__per">пакет / Світлана</p>
+            <a href="#contact" class="rate-card__btn">Записатися</a>
+          </div>
+          <div class="rate-card">
+            <h3 class="rate-card__name">9 УРОКІВ</h3>
+            <p class="rate-card__duration">9 × 80 хв.</p>
+            <p class="rate-card__price">1230 грн</p>
+            <p class="rate-card__per">пакет / інші викладачі</p>
+            <a href="#contact" class="rate-card__btn">Записатися</a>
+          </div>
+        </div>
+        <div class="rates__other">
+          <h3 class="rates__other-title">Інші формати навчання</h3>
+          <div class="rates__other-grid">
+            
+            <div class="rate-card">
+              <h3 class="rate-card__name">ПАРНІ ЗАНЯТТЯ</h3>
+              <p class="rate-card__price">від 190 грн / 60 хв.</p>
+              <a href="pair_classes.html" class="rate-card__btn">Детальніше</a>
+            </div>
+            <div class="rate-card">
+              <h3 class="rate-card__name">ІНДИВІДУАЛЬНІ ЗАНЯТТЯ</h3>
+              <p class="rate-card__price">від 300 грн / 55 хв.</p>
+              <a href="individual_classes.html" class="rate-card__btn">Детальніше</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--pink-bg faq" id="faq">
+      <div class="container">
+        <h2 class="faq__title">ЧАСТІ ПИТАННЯ</h2>
+        <ul class="faq__list">
+          <li class="faq-item">
+            <button class="faq-item__question">Чи можна повернути оплату? <span class="faq-item__icon">+</span></button>
+            <div class="faq-item__answer">Так, ви можете повернути оплату за невикористані заняття. Зв'яжіться з нами через email або Telegram для уточнення деталей.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-item__question">Як проходять заняття? <span class="faq-item__icon">+</span></button>
+            <div class="faq-item__answer">Заняття проходять онлайн через Zoom, Skype або Teams. Після оплати ми надішлемо посилання та розклад.</div>
+          </li>
+          <li class="faq-item">
+            <button class="faq-item__question">Як обрати викладача? <span class="faq-item__icon">+</span></button>
+            <div class="faq-item__answer">Ми проведемо безкоштовний пробний урок для визначення рівня та підбору найкращого викладача під ваші цілі.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__info">
+            <h2 class="contact__title">ЗВ'ЯЖІТЬСЯ З НАМИ</h2>
+            <p class="contact__text">Ми завжди раді відповісти на будь-яке запитання! Залишіть заявку нижче або напишіть у месенджер.</p>
+            <div class="contact__channels">
+              <a href="https://t.me/startsmart_world" class="contact__channel" target="_blank" rel="noopener">
+                <img src="https://static.tildacdn.one/tild3139-3365-4065-b837-663861333863/telegramm.jpg" alt="Telegram"/>
+                <span>Telegram</span>
+              </a>
+              <a href="https://instagram.com/startsmart_world" class="contact__channel" target="_blank" rel="noopener">
+                <img src="https://static.tildacdn.one/tild3166-6132-4263-b636-333330646135/instagram.jpg" alt="Instagram"/>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+          <form class="form" action="#" method="post">
+            <h3 class="form__title">ЗАПИС НА УРОК</h3>
+            <div class="form__group">
+              <label class="form__label" for="grp-name">Ваше ім'я</label>
+              <input class="form__input" type="text" id="grp-name" name="name" placeholder="Ім'я" required/>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="grp-phone">Телефон або Telegram</label>
+              <input class="form__input" type="text" id="grp-phone" name="phone" placeholder="+380..."/>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="grp-msg">Коментар</label>
+              <textarea class="form__textarea" id="grp-msg" name="message" placeholder="Рівень, мета, зручний час..."></textarea>
+            </div>
+            <button class="form__btn" type="submit">Надіслати</button>
+            <p class="form__note">Натискаючи кнопку, ви даєте згоду на обробку персональних даних</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="layout__footer footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="index.html" class="footer__logo">StartSmart</a>
+        <p class="footer__copy">© 2024 StartSmart. Всі права захищені. <a href="mailto:startsmart.poltava@gmail.com">startsmart.poltava@gmail.com</a></p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/startsmartplt" class="footer__social-link" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://t.me/startsmart_world" class="footer__social-link" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="https://instagram.com/startsmart_world" class="footer__social-link" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    if(burger) burger.addEventListener('click', () => { mobileMenu.classList.add('mobile-menu--open'); mobileMenu.setAttribute('aria-hidden','false'); });
+    if(closeBtn) closeBtn.addEventListener('click', () => { mobileMenu.classList.remove('mobile-menu--open'); mobileMenu.setAttribute('aria-hidden','true'); });
+    document.querySelectorAll('.faq-item__question').forEach(q => {
+      q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('faq-item--open'));
+    });
+  </script>
+</body>
+</html>
