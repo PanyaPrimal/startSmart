@@ -1,0 +1,60 @@
+---
+// Список версий сайта. Добавляй сюда новые редизайны.
+const versions = [
+  { value: '/',         label: 'v1 — Astro (поточна)' },
+  { value: '/legacy/index.html',  label: 'v0 — Оригінал' },
+  // { value: '/v2/',   label: 'v2 — Новий дизайн' },
+];
+---
+<div class="version-switcher">
+  <label class="version-switcher__label" for="versionSelect">Версія:</label>
+  <select id="versionSelect" class="version-switcher__select">
+    {versions.map(v => (
+      <option value={v.value}>{v.label}</option>
+    ))}
+  </select>
+</div>
+
+<script is:inline>
+  (function () {
+    const select = document.getElementById('versionSelect');
+    if (!select) return;
+
+    // Определяем текущую версию по URL
+    const path = window.location.pathname;
+    let current = '/';
+    for (const opt of select.options) {
+      const prefix = opt.value.replace(/index\.html$/, '');
+      if (opt.value !== '/' && path.startsWith(prefix)) {
+        current = opt.value;
+        break;
+      }
+    }
+    select.value = current;
+
+    select.addEventListener('change', (e) => {
+      window.location.href = e.target.value;
+    });
+  })();
+</script>
+
+<style>
+  .version-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 16px;
+    font-size: 13px;
+  }
+  .version-switcher__label {
+    color: #888;
+  }
+  .version-switcher__select {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    cursor: pointer;
+  }
+</style>

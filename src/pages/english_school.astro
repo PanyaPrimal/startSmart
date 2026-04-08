@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="English School">
+  <section class="hero" id="start">
+    <div class="hero__bg" style="background-image:url('/images/Hat.jpg');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <h1 class="hero__title">English School</h1>
+      <p class="hero__subtitle">Мовна студія StartSmart запрошує на цікаві заняття з польської та англійської мов</p>
+      <a href="#about" class="hero__cta">Починай смартово</a>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__content">
+          <p class="about__label">Про нас</p>
+          <h2 class="about__title">ПРО ШКОЛУ</h2>
+          <p class="about__text">Школа StartSmart — це онлайн спільнота людей, які мають жагу до знань. Викладаємо за міжнародними стандартами, використовуючи найсучаснішу методику та авторську програму.</p>
+          <p class="about__text">У нас ви навчитеся використовувати англійську та польську в реальному житті! Комунікативна методика — це чудовий спосіб для викладання мови, адже її головна мета — стати інструментом для спілкування з людьми у реальному житті.</p>
+          <p class="about__text">Лексичний підхід в класичному розумінні — це тлумачення мови як системи лексичних одиниць для всіх: дітей, підлітків, дорослих, туризму, граматика, медична англійська та багато іншого.</p>
+        </div>
+        <div class="about__image">
+          <img src="/images/berdPink.png" alt="StartSmart школа" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--pink-bg features" id="courses">
+    <div class="container">
+      <h2 class="features__title">ПІСЛЯ КУРСІВ ВИ ЗМОЖЕТЕ</h2>
+      <div class="features__grid">
+        <div class="feature-card"><div class="feature-card__icon">💬</div><p class="feature-card__title">Впевнено спілкуватися з носіями та іноземцями</p></div>
+        <div class="feature-card"><div class="feature-card__icon">🎬</div><p class="feature-card__title">Дивитися серіали англійською</p></div>
+        <div class="feature-card"><div class="feature-card__icon">✈️</div><p class="feature-card__title">Вільно подорожувати</p></div>
+        <div class="feature-card"><div class="feature-card__icon">📰</div><p class="feature-card__title">Читати статті в оригіналі</p></div>
+        <div class="feature-card"><div class="feature-card__icon">💼</div><p class="feature-card__title">Отримати нову роботу</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section methods" id="methods">
+    <div class="container">
+      <h2 class="methods__title">ВИДИ НАВЧАННЯ</h2>
+      <div class="methods__grid">
+        <div class="method-card">
+          <img class="method-card__icon" src="/images/ZoomImage.jpg" alt="Індивідуально" />
+          <h3 class="method-card__title">Індивідуально</h3>
+          <p class="method-card__text">Ви + викладач / урок 55 хв. Викладач адаптує програму під ваші цілі та побажання для максимально швидкого результату.</p>
+          <p class="method-card__price">від 300 грн / 55 хв.</p>
+          <a href="/individual_classes.html" class="method-card__btn">Детальніше</a>
+        </div>
+        <div class="method-card">
+          <img class="method-card__icon" src="/images/skype.jpg" alt="В парі" />
+          <h3 class="method-card__title">В парі</h3>
+          <p class="method-card__text">2 учня + викладач / урок 60 хв. Ви можете займатися з другом або подругою. Вивчення мови буде ефективним та веселим!</p>
+          <p class="method-card__price">від 190 грн / 60 хв.</p>
+          <a href="/pair_classes.html" class="method-card__btn">Детальніше</a>
+        </div>
+        <div class="method-card">
+          <img class="method-card__icon" src="/images/telegram1.png" alt="В групі" />
+          <h3 class="method-card__title">В групі</h3>
+          <p class="method-card__text">3-4 учня + викладач / урок 80 хв. Групові заняття найкраще передають атмосферу використання мов у реальному житті.</p>
+          <p class="method-card__price">від 150 грн / 80 хв.</p>
+          <a href="/group_classes.html" class="method-card__btn">Детальніше</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rates" id="rates">
+    <div class="container">
+      <h2 class="rates__title">ЦІНИ НА КУРСИ</h2>
+      <div class="rates__grid">
+        <div class="rate-card">
+          <h3 class="rate-card__name">ПАРНІ ЗАНЯТТЯ</h3>
+          <p class="rate-card__duration">урок 60 хв.</p>
+          <p class="rate-card__price">від 190 грн</p>
+          <p class="rate-card__per">за урок / з людини</p>
+          <a href="/pair_classes.html" class="rate-card__btn">Детальніше</a>
+        </div>
+        <div class="rate-card rate-card--featured">
+          <h3 class="rate-card__name">ІНДИВІДУАЛЬНІ ЗАНЯТТЯ</h3>
+          <p class="rate-card__duration">урок 55 хв.</p>
+          <p class="rate-card__price">від 300 грн</p>
+          <p class="rate-card__per">за урок</p>
+          <a href="/individual_classes.html" class="rate-card__btn">Детальніше</a>
+        </div>
+        <div class="rate-card">
+          <h3 class="rate-card__name">ГРУПОВІ ЗАНЯТТЯ</h3>
+          <p class="rate-card__duration">урок 80 хв.</p>
+          <p class="rate-card__price">від 150 грн</p>
+          <p class="rate-card__per">за урок / з людини</p>
+          <a href="/group_classes.html" class="rate-card__btn">Детальніше</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section teachers" id="teachers">
+    <div class="container">
+      <h2 class="teachers__title">ВИКЛАДАЧІ</h2>
+      <div class="teachers__grid">
+        <div class="teacher-card">
+          <img class="teacher-card__photo" src="/images/Hat_4.png" alt="Анастасія" />
+          <h3 class="teacher-card__name">АНАСТАСІЯ</h3>
+          <p class="teacher-card__quote">"ШВИДКО ЗНАХОДЖУ ПІДХІД ДО КОЖНОГО УЧНЯ."</p>
+          <p class="teacher-card__info">Рівень англійської С1 · Досвід викладання 2 роки · Вища філологічна освіта · Викладає для дітей, підлітків та дорослих · Сертифікований викладач</p>
+        </div>
+        <div class="teacher-card">
+          <img class="teacher-card__photo" src="/images/Hat_4.png" alt="Валерія" />
+          <h3 class="teacher-card__name">ВАЛЕРІЯ</h3>
+          <p class="teacher-card__quote">"ІНДИВІДУАЛЬНО РОЗРОБЛЯЮ НАШІ УРОКИ, ЩОБ ДОПАСУВАТИ ЇХ ДО ПОТРЕБ СТУДЕНТА."</p>
+          <p class="teacher-card__info">Рівень польської С1 · Досвід викладання 5 років · Вища педагогічна освіта · Викладає для дітей, підлітків та дорослих</p>
+        </div>
+        <div class="teacher-card">
+          <img class="teacher-card__photo" src="/images/Hat_4.png" alt="Діана" />
+          <h3 class="teacher-card__name">ДІАНА</h3>
+          <p class="teacher-card__quote">"ШВИДКО ЗНАХОДЖУ ПІДХІД ДО КОЖНОГО УЧНЯ."</p>
+          <p class="teacher-card__info">Рівень польської С2 · Досвід викладання 2 роки · Викладає для дітей, підлітків та дорослих · Сертифікований викладач</p>
+        </div>
+        <div class="teacher-card">
+          <img class="teacher-card__photo" src="/images/Hat_4.png" alt="Євгенія" />
+          <h3 class="teacher-card__name">ЄВГЕНІЯ</h3>
+          <p class="teacher-card__quote">"ОРГАНІЗОВУЮ ВЕСЕЛУ ТА ПРОДУКТИВНУ РОБОТУ В ГРУПАХ."</p>
+          <p class="teacher-card__info">Вища філологічна і коуч освіта · Досвід викладання в міжнародному середовищі (британські та американські корпорації) · Native speaker</p>
+        </div>
+        <div class="teacher-card">
+          <img class="teacher-card__photo" src="/images/galka.jpg" alt="Світлана" />
+          <h3 class="teacher-card__name">СВІТЛАНА</h3>
+          <p class="teacher-card__quote">"ДОПОМОЖУ ВИВЧИТИ МОВУ У НАЙПРОСТІШИЙ ДЛЯ ВАС СПОСІБ."</p>
+          <p class="teacher-card__info">Засновниця онлайн-школи StartSmart · Бізнес-коуч · Викладач англійської та польської мов · Має підтверджений рівень С1</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--pink-bg faq" id="questions">
+    <div class="container">
+      <h2 class="faq__title">ЧАСТІ ПИТАННЯ</h2>
+      <ul class="faq__list">
+        <li class="faq-item">
+          <button class="faq-item__question">Чи можна повернути оплату? <span class="faq-item__icon">+</span></button>
+          <div class="faq-item__answer">Так, ви можете повернути оплату за невикористані заняття. Зв'яжіться з нами через email або Telegram.</div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-item__question">Як проходять заняття? <span class="faq-item__icon">+</span></button>
+          <div class="faq-item__answer">Заняття проходять онлайн через Zoom, Skype або Teams. Після реєстрації ми надішлемо посилання на урок.</div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-item__question">Як записатися на пробний урок? <span class="faq-item__icon">+</span></button>
+          <div class="faq-item__answer">Заповніть форму нижче або напишіть нам у Telegram чи Instagram. Перший урок — безкоштовне тестування рівня.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section contact" id="contacts">
+    <div class="container">
+      <div class="contact__inner">
+        <div class="contact__info">
+          <h2 class="contact__title">ЗВ'ЯЖІТЬСЯ З НАМИ</h2>
+          <p class="contact__text">Ми завжди раді відповісти на будь-яке запитання! Залишіть ваш запит нижче або напишіть нам напряму.</p>
+          <div class="contact__channels">
+            <a href="https://t.me/startsmart_world" class="contact__channel" target="_blank" rel="noopener">
+              <img src="/images/telegramm.jpg" alt="Telegram" />
+              <span>Telegram</span>
+            </a>
+            <a href="https://instagram.com/startsmart_world" class="contact__channel" target="_blank" rel="noopener">
+              <img src="/images/instagram.jpg" alt="Instagram" />
+              <span>Instagram</span>
+            </a>
+            <a href="mailto:startsmart.poltava@gmail.com" class="contact__channel">
+              <span>📧</span>
+              <span>startsmart.poltava@gmail.com</span>
+            </a>
+          </div>
+        </div>
+        <form class="form" action="#" method="post">
+          <h3 class="form__title">ЗАПИС НА ПРОБНИЙ УРОК</h3>
+          <div class="form__group">
+            <label class="form__label" for="es-name">Ваше ім'я</label>
+            <input class="form__input" type="text" id="es-name" name="name" placeholder="Ім'я" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="es-phone">Телефон або Telegram</label>
+            <input class="form__input" type="text" id="es-phone" name="phone" placeholder="+380..." />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="es-msg">Побажання</label>
+            <textarea class="form__textarea" id="es-msg" name="message" placeholder="Мета навчання, рівень, зручний час..."></textarea>
+          </div>
+          <button class="form__btn" type="submit">Надіслати</button>
+          <p class="form__note">Натискаючи кнопку, ви даєте згоду на обробку персональних даних</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

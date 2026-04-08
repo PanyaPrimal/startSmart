@@ -1,0 +1,47 @@
+---
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/main.scss';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — StartSmart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="layout">
+  <Header />
+  <MobileMenu />
+  <main class="layout__main" id="main-content">
+    <slot />
+  </main>
+  <Footer />
+
+  <script is:inline>
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    if (burger) burger.addEventListener('click', () => {
+      mobileMenu.classList.add('mobile-menu--open');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    });
+    if (closeBtn) closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('mobile-menu--open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    });
+    document.querySelectorAll('.faq-item__question').forEach(q => {
+      q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('faq-item--open'));
+    });
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Індивідуальні заняття — StartSmart</title>
+  <title>Парні заняття — StartSmart</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -59,11 +59,11 @@
 
     <!-- HERO -->
     <section class="hero" id="start">
-      <div class="hero__bg" style="background-image:url('images/1111.png'); background-color:#e17088;"></div>
-      <div class="hero__overlay" style="background:rgba(225,112,136,0.6);"></div>
+      <div class="hero__bg" style="background-image:url('images/1111.png'); background-color:#65b9a8;"></div>
+      <div class="hero__overlay" style="background:rgba(101,185,168,0.6);"></div>
       <div class="hero__content container">
-        <h1 class="hero__title">ІНДИВІДУАЛЬНІ ЗАНЯТТЯ</h1>
-        <p class="hero__subtitle">Ви + викладач / урок 55 хв. Програма адаптується повністю під вас</p>
+        <h1 class="hero__title">ПАРНІ ЗАНЯТТЯ</h1>
+        <p class="hero__subtitle">2 учня + викладач / урок 60 хв. Вчіться разом з другом або партнером</p>
         <a href="#rates" class="hero__cta">Дивитися ціни</a>
       </div>
     </section>
@@ -76,22 +76,22 @@
         <div class="rates__grid">
           <div class="rate-card">
             <h3 class="rate-card__name">ПЕРШИЙ УРОК</h3>
-            <p class="rate-card__duration">55 хв.</p>
-            <p class="rate-card__price">400 грн</p>
+            <p class="rate-card__duration">60 хв.</p>
+            <p class="rate-card__price">250 грн</p>
             <p class="rate-card__per">за урок</p>
             <a href="#contact" class="rate-card__btn">Записатися</a>
           </div>
           <div class="rate-card rate-card--featured">
-            <h3 class="rate-card__name">10 УРОКІВ</h3>
-            <p class="rate-card__duration">10 × 55 хв.</p>
-            <p class="rate-card__price">3600 грн</p>
+            <h3 class="rate-card__name">9 УРОКІВ</h3>
+            <p class="rate-card__duration">9 × 60 хв.</p>
+            <p class="rate-card__price">2050 грн</p>
             <p class="rate-card__per">пакет / Світлана</p>
             <a href="#contact" class="rate-card__btn">Записатися</a>
           </div>
           <div class="rate-card">
-            <h3 class="rate-card__name">10 УРОКІВ</h3>
-            <p class="rate-card__duration">10 × 55 хв.</p>
-            <p class="rate-card__price">3150 грн</p>
+            <h3 class="rate-card__name">9 УРОКІВ</h3>
+            <p class="rate-card__duration">9 × 60 хв.</p>
+            <p class="rate-card__price">1600 грн</p>
             <p class="rate-card__per">пакет / інші викладачі</p>
             <a href="#contact" class="rate-card__btn">Записатися</a>
           </div>
@@ -101,9 +101,9 @@
           <div class="rates__other-grid">
             
             <div class="rate-card">
-              <h3 class="rate-card__name">ПАРНІ ЗАНЯТТЯ</h3>
-              <p class="rate-card__price">від 190 грн / 60 хв.</p>
-              <a href="pair_classes.html" class="rate-card__btn">Детальніше</a>
+              <h3 class="rate-card__name">ІНДИВІДУАЛЬНІ ЗАНЯТТЯ</h3>
+              <p class="rate-card__price">від 300 грн / 55 хв.</p>
+              <a href="individual_classes.html" class="rate-card__btn">Детальніше</a>
             </div>
             <div class="rate-card">
               <h3 class="rate-card__name">ГРУПОВІ ЗАНЯТТЯ</h3>
@@ -157,16 +157,16 @@
           <form class="form" action="#" method="post">
             <h3 class="form__title">ЗАПИС НА УРОК</h3>
             <div class="form__group">
-              <label class="form__label" for="ind-name">Ваше ім'я</label>
-              <input class="form__input" type="text" id="ind-name" name="name" placeholder="Ім'я" required/>
+              <label class="form__label" for="pair-name">Ваше ім'я</label>
+              <input class="form__input" type="text" id="pair-name" name="name" placeholder="Ім'я" required/>
             </div>
             <div class="form__group">
-              <label class="form__label" for="ind-phone">Телефон або Telegram</label>
-              <input class="form__input" type="text" id="ind-phone" name="phone" placeholder="+380..."/>
+              <label class="form__label" for="pair-phone">Телефон або Telegram</label>
+              <input class="form__input" type="text" id="pair-phone" name="phone" placeholder="+380..."/>
             </div>
             <div class="form__group">
-              <label class="form__label" for="ind-msg">Коментар</label>
-              <textarea class="form__textarea" id="ind-msg" name="message" placeholder="Рівень, мета, зручний час..."></textarea>
+              <label class="form__label" for="pair-msg">Коментар</label>
+              <textarea class="form__textarea" id="pair-msg" name="message" placeholder="Рівень, мета, зручний час..."></textarea>
             </div>
             <button class="form__btn" type="submit">Надіслати</button>
             <p class="form__note">Натискаючи кнопку, ви даєте згоду на обробку персональних даних</p>
@@ -206,5 +206,5 @@
       q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('faq-item--open'));
     });
   </script>
-</body>
+<script src="/version-switcher.js"></script></body>
 </html>
