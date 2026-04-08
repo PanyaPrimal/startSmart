@@ -87,6 +87,17 @@
 
 // Photos and decorative raster images get dimmed in dark mode
 [data-theme="dark"] .themed-photo,
-[data-theme="dark"] .hero__bg {
+[data-theme="dark"] .hero__bg,
+[data-theme="dark"] .about__image img,
+[data-theme="dark"] .method-card__icon,
+[data-theme="dark"] .teacher-card__photo,
+[data-theme="dark"] .contact__channel img,
+[data-theme="dark"] .social-promo__card img {
   filter: brightness(0.85) contrast(1.05);
+}
+
+// Decorative hat PNGs on the home quick-menu: fade further so they don't dominate
+[data-theme="dark"] .quick-menu__deco {
+  opacity: 0.25;
+  filter: brightness(0.75);
 }

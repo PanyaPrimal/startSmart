@@ -6,6 +6,7 @@
   padding: 0;
 }
 html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
 body {
   font-family: $font-primary;
   font-size: $font-size-base;

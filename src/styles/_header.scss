@@ -8,26 +8,32 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    gap: 16px;
+    min-height: 70px;
+    flex-wrap: nowrap;
   }
   &__logo {
     font-size: 22px;
     font-weight: 700;
     color: var(--color-text);
     letter-spacing: 0.03em;
+    flex-shrink: 0;
     span { color: var(--color-pink); }
   }
   &__nav {
-    @media (max-width: $bp-tablet) { display: none; }
+    min-width: 0;
+    @media (max-width: $bp-desktop) { display: none; }
   }
   &__socials {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
     @media (max-width: $bp-tablet) { display: none; }
   }
   &__version-wrap {
-    @media (max-width: $bp-tablet) { display: none; }
+    flex-shrink: 0;
+    @media (max-width: $bp-desktop) { display: none; }
   }
   &__social-link {
     display: flex;

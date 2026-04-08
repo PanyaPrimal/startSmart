@@ -79,6 +79,14 @@
   }
 }
 
+// Generic helper for muted one-line annotations
+.rates__note {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 15px;
+  color: var(--color-text-soft);
+}
+
 // ===== RATES (pricing) =====
 .rates {
   background-color: var(--color-bg-soft);
