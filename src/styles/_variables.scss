@@ -1,22 +1,17 @@
-// === Colors ===
-$color-pink:      #e17088;
-$color-teal:      #65b9a8;
-$color-black:     #000000;
-$color-white:     #ffffff;
-$color-text:      #333333;
-$color-bg:        #ffffff;
-$color-bg-light:  #fdf6f6;
+// === Non-themable values ===
+// Theme colors live in _tokens.scss as CSS custom properties.
+// This file holds compile-time values that don't change between themes.
 
-// === Typography ===
-$font-primary:    'Inter', Arial, sans-serif;
-$font-size-base:  16px;
+// Typography
+$font-primary:     'Inter', Arial, sans-serif;
+$font-size-base:   16px;
 $line-height-base: 1.5;
 
-// === Breakpoints ===
+// Breakpoints
 $bp-mobile:  480px;
 $bp-tablet:  768px;
 $bp-desktop: 1200px;
 
-// === Spacing ===
+// Spacing & layout
 $container-width: 1140px;
 $container-pad:   20px;

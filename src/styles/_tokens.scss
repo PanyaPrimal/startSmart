@@ -1,0 +1,92 @@
+// === Theme tokens (CSS custom properties) ===
+// Single source of truth for colors. Switch via [data-theme] on <html>.
+// SCSS variables in _variables.scss are reserved for non-themable values
+// (breakpoints, spacing, typography).
+
+:root {
+  // Brand
+  --color-pink:             #e17088;
+  --color-pink-hover:       #c8546c;
+  --color-teal:             #65b9a8;
+  --color-teal-hover:       #4ea493;
+
+  // Text
+  --color-text:             #333333;
+  --color-text-muted:       #66666b;
+  --color-text-soft:        #88888d;
+
+  // Backgrounds & surfaces
+  --color-bg:               #ffffff;
+  --color-bg-soft:          #fdf6f6;
+  --color-bg-teal-soft:     #e2f1ed;
+  --color-surface:          #ffffff;
+  --color-surface-raised:   #ffffff;
+
+  // Borders
+  --color-border:           rgba(0, 0, 0, 0.08);
+  --color-border-pink:      rgba(225, 112, 136, 0.3);
+  --color-border-pink-soft: rgba(225, 112, 136, 0.2);
+
+  // Shadows
+  --shadow-sm:              0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md:              0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg:              0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-pop:             0 8px 20px rgba(0, 0, 0, 0.15);
+
+  // Overlays / utilities
+  --color-hero-overlay:     rgba(225, 112, 136, 0.55);
+  --color-faq-hover:        #fbe5ea;
+  --color-pink-promo:       rgba(225, 112, 136, 0.8);
+
+  // On-brand text (text color on pink/teal filled buttons)
+  --color-on-brand:         #ffffff;
+
+  // Constants (do not change between themes)
+  --color-white:            #ffffff;
+  --color-black:            #000000;
+}
+
+[data-theme="dark"] {
+  // Brand — softened so they don't vibrate on dark backgrounds
+  --color-pink:             #e98aa0;
+  --color-pink-hover:       #f1a3b6;
+  --color-teal:             #7bc7b6;
+  --color-teal-hover:       #93d3c5;
+
+  // Text
+  --color-text:             #e6e8ed;
+  --color-text-muted:       #a6abb6;
+  --color-text-soft:        #7a8090;
+
+  // Backgrounds & surfaces
+  --color-bg:               #0f1115;
+  --color-bg-soft:          #181b22;
+  --color-bg-teal-soft:     #162421;
+  --color-surface:          #1c2029;
+  --color-surface-raised:   #232834;
+
+  // Borders
+  --color-border:           rgba(255, 255, 255, 0.08);
+  --color-border-pink:      rgba(233, 138, 160, 0.35);
+  --color-border-pink-soft: rgba(233, 138, 160, 0.25);
+
+  // Shadows — deeper, since dark surfaces need more separation
+  --shadow-sm:              0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md:              0 2px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg:              0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-pop:             0 8px 20px rgba(0, 0, 0, 0.55);
+
+  // Overlays / utilities
+  --color-hero-overlay:     rgba(15, 17, 21, 0.6);
+  --color-faq-hover:        #2a1f25;
+  --color-pink-promo:       rgba(233, 138, 160, 0.85);
+
+  // On-brand text — slightly dark so contrast against softened brand stays high
+  --color-on-brand:         #1a1a1a;
+}
+
+// Photos and decorative raster images get dimmed in dark mode
+[data-theme="dark"] .themed-photo,
+[data-theme="dark"] .hero__bg {
+  filter: brightness(0.85) contrast(1.05);
+}

@@ -3,7 +3,7 @@
   &__link {
     font-size: 14px;
     font-weight: 500;
-    color: $color-text;
+    color: var(--color-text);
     position: relative;
     padding-bottom: 2px;
     transition: color 0.2s;
@@ -12,11 +12,11 @@
       position: absolute;
       bottom: 0; left: 0;
       width: 0; height: 2px;
-      background-color: $color-pink;
+      background-color: var(--color-pink);
       transition: width 0.25s ease;
     }
-    &:hover { color: $color-pink; &::after { width: 100%; } }
-    &--active { color: $color-pink; &::after { width: 100%; } }
+    &:hover { color: var(--color-pink); &::after { width: 100%; } }
+    &--active { color: var(--color-pink); &::after { width: 100%; } }
   }
 }
 
@@ -25,7 +25,7 @@
   position: fixed;
   top: 0; right: 0;
   width: 280px; height: 100%;
-  background-color: $color-pink;
+  background-color: var(--color-pink);
   z-index: 200;
   padding: 60px 30px 30px;
   flex-direction: column;
@@ -35,7 +35,7 @@
     position: absolute;
     top: 20px; right: 20px;
     font-size: 24px;
-    color: $color-white;
+    color: #fff;
     background: none;
     border: none;
     cursor: pointer;
@@ -43,7 +43,7 @@
   &__link {
     font-size: 20px;
     font-weight: 600;
-    color: $color-white;
+    color: #fff;
     transition: opacity 0.2s;
     &:hover { opacity: 0.75; }
   }

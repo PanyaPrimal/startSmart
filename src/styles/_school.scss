@@ -6,26 +6,26 @@
   align-items: center;
   overflow: hidden;
   &__bg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; }
-  &__overlay { position: absolute; inset: 0; background: rgba($color-pink, 0.55); z-index: 1; }
+  &__overlay { position: absolute; inset: 0; background: var(--color-hero-overlay); z-index: 1; }
   &__content { position: relative; z-index: 2; text-align: center; width: 100%; padding: 80px 20px; }
   &__title {
     font-size: clamp(28px, 5vw, 52px);
-    font-weight: 700; color: $color-white;
+    font-weight: 700; color: #fff;
     margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em;
   }
   &__subtitle {
     font-size: clamp(16px, 2.5vw, 22px);
-    color: rgba($color-white, 0.9);
+    color: rgba(255, 255, 255, 0.9);
     max-width: 600px; margin: 0 auto 30px;
   }
   &__cta {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 14px 40px; border-radius: 60px;
-    background-color: $color-white; color: $color-pink;
+    background-color: #fff; color: var(--color-pink);
     font-weight: 700; font-size: 16px;
     text-transform: uppercase; letter-spacing: 0.05em;
     transition: background-color 0.2s, color 0.2s;
-    &:hover { background-color: $color-pink; color: $color-white; }
+    &:hover { background-color: var(--color-pink); color: #fff; }
   }
 }
 
@@ -36,112 +36,114 @@
     @media (max-width: $bp-tablet) { grid-template-columns: 1fr; gap: 30px; }
   }
   &__image { border-radius: 20px; overflow: hidden; }
-  &__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: $color-pink; margin-bottom: 12px; }
-  &__title { font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; color: $color-black; margin-bottom: 20px; line-height: 1.2; }
-  &__text { font-size: 15px; line-height: 1.7; color: rgba($color-text, 0.8); margin-bottom: 14px; }
-  &__quote { font-style: italic; color: $color-pink; font-size: 15px; margin-top: 16px; }
+  &__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-pink); margin-bottom: 12px; }
+  &__title { font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; color: var(--color-text); margin-bottom: 20px; line-height: 1.2; }
+  &__text { font-size: 15px; line-height: 1.7; color: var(--color-text-muted); margin-bottom: 14px; }
+  &__quote { font-style: italic; color: var(--color-pink); font-size: 15px; margin-top: 16px; }
 }
 
 // ===== FEATURES =====
 .features {
-  background-color: $color-bg-light;
-  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; }
+  background-color: var(--color-bg-soft);
+  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; color: var(--color-text); }
   &__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 24px; }
 }
 .feature-card {
-  background: $color-white; border-radius: 16px; padding: 28px 20px; text-align: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: var(--color-surface); border-radius: 16px; padding: 28px 20px; text-align: center;
+  box-shadow: var(--shadow-md);
   &__icon { font-size: 36px; margin-bottom: 14px; }
-  &__title { font-size: 16px; font-weight: 700; color: $color-black; }
+  &__title { font-size: 16px; font-weight: 700; color: var(--color-text); }
 }
 
 // ===== METHODS =====
 .methods {
-  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; }
+  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; color: var(--color-text); }
   &__grid {
     display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
     @media (max-width: $bp-tablet) { grid-template-columns: 1fr; }
   }
 }
 .method-card {
-  background: $color-white; border-radius: 20px; padding: 32px 24px; text-align: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.25s;
+  background: var(--color-surface); border-radius: 20px; padding: 32px 24px; text-align: center;
+  box-shadow: var(--shadow-md); transition: transform 0.25s;
   &:hover { transform: translateY(-3px); }
   &__icon { margin: 0 auto 20px; width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-  &__title { font-size: 20px; font-weight: 700; color: $color-black; margin-bottom: 10px; }
-  &__text { font-size: 14px; color: rgba($color-text,0.7); line-height: 1.6; margin-bottom: 16px; }
-  &__price { font-size: 16px; font-weight: 700; color: $color-teal; margin-bottom: 20px; }
+  &__title { font-size: 20px; font-weight: 700; color: var(--color-text); margin-bottom: 10px; }
+  &__text { font-size: 14px; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px; }
+  &__price { font-size: 16px; font-weight: 700; color: var(--color-teal); margin-bottom: 20px; }
   &__btn {
     display: inline-flex; padding: 10px 24px; border-radius: 40px;
-    background-color: $color-teal; color: $color-white; font-size: 14px; font-weight: 600;
+    background-color: var(--color-teal); color: var(--color-on-brand); font-size: 14px; font-weight: 600;
     transition: background-color 0.2s;
-    &:hover { background-color: darken($color-teal, 10%); }
+    &:hover { background-color: var(--color-teal-hover); }
   }
 }
 
 // ===== RATES (pricing) =====
 .rates {
-  background-color: $color-bg-light;
-  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; }
+  background-color: var(--color-bg-soft);
+  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; color: var(--color-text); }
   &__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 24px; }
   &__other {
     margin-top: 40px;
-    &-title { font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+    &-title { font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 24px; color: var(--color-text); }
     &-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; }
   }
 }
 .rate-card {
-  background: $color-white; border-radius: 20px; padding: 32px 24px; text-align: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: var(--color-surface); border-radius: 20px; padding: 32px 24px; text-align: center;
+  box-shadow: var(--shadow-md);
   border: 2px solid transparent; transition: border-color 0.25s, transform 0.25s;
-  &:hover { border-color: $color-pink; transform: translateY(-3px); }
-  &--featured { border-color: $color-pink; }
-  &__name { font-size: 20px; font-weight: 700; color: $color-black; margin-bottom: 8px; }
-  &__duration { font-size: 13px; color: rgba($color-text,0.5); margin-bottom: 16px; }
-  &__price { font-size: 32px; font-weight: 800; color: $color-pink; margin-bottom: 4px; }
-  &__per { font-size: 13px; color: rgba($color-text,0.6); margin-bottom: 24px; }
+  &:hover { border-color: var(--color-pink); transform: translateY(-3px); }
+  &--featured { border-color: var(--color-pink); }
+  &__name { font-size: 20px; font-weight: 700; color: var(--color-text); margin-bottom: 8px; }
+  &__duration { font-size: 13px; color: var(--color-text-soft); margin-bottom: 16px; }
+  &__price { font-size: 32px; font-weight: 800; color: var(--color-pink); margin-bottom: 4px; }
+  &__per { font-size: 13px; color: var(--color-text-soft); margin-bottom: 24px; }
   &__btn {
     display: inline-flex; padding: 12px 32px; border-radius: 40px;
-    background-color: $color-pink; color: $color-white; font-size: 15px; font-weight: 600;
+    background-color: var(--color-pink); color: var(--color-on-brand); font-size: 15px; font-weight: 600;
     transition: background-color 0.2s;
-    &:hover { background-color: darken($color-pink, 10%); }
+    &:hover { background-color: var(--color-pink-hover); }
   }
-  &__note { font-size: 12px; color: rgba($color-text,0.5); margin-top: 12px; }
+  &__note { font-size: 12px; color: var(--color-text-soft); margin-top: 12px; }
 }
 
 // ===== TEACHERS =====
 .teachers {
-  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; }
+  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; color: var(--color-text); }
   &__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 32px; }
 }
 .teacher-card {
   text-align: center;
   &__photo {
     width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
-    margin: 0 auto 16px; border: 4px solid $color-pink;
+    margin: 0 auto 16px; border: 4px solid var(--color-pink);
   }
-  &__name { font-size: 18px; font-weight: 700; color: $color-black; margin-bottom: 6px; text-transform: uppercase; }
-  &__quote { font-size: 13px; font-style: italic; color: $color-pink; margin-bottom: 12px; }
-  &__info { font-size: 13px; line-height: 1.6; color: rgba($color-text,0.75); }
+  &__name { font-size: 18px; font-weight: 700; color: var(--color-text); margin-bottom: 6px; text-transform: uppercase; }
+  &__quote { font-size: 13px; font-style: italic; color: var(--color-pink); margin-bottom: 12px; }
+  &__info { font-size: 13px; line-height: 1.6; color: var(--color-text-muted); }
 }
 
 // ===== FAQ =====
 .faq {
-  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; }
+  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; text-align: center; margin-bottom: 50px; color: var(--color-text); }
   &__list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 }
 .faq-item {
-  border-radius: 12px; border: 1px solid rgba($color-pink, 0.3); overflow: hidden;
+  border-radius: 12px; border: 1px solid var(--color-border-pink); overflow: hidden;
+  background-color: var(--color-surface);
   &__question {
     padding: 18px 24px; font-size: 16px; font-weight: 600; cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
-    background-color: $color-white; transition: background-color 0.2s;
-    &:hover { background-color: lighten($color-pink, 32%); }
+    background-color: var(--color-surface); color: var(--color-text);
+    transition: background-color 0.2s;
+    &:hover { background-color: var(--color-faq-hover); }
   }
-  &__icon { font-size: 20px; color: $color-pink; transition: transform 0.3s; }
+  &__icon { font-size: 20px; color: var(--color-pink); transition: transform 0.3s; }
   &__answer {
     padding: 0 24px; max-height: 0; overflow: hidden;
-    font-size: 15px; line-height: 1.7; color: rgba($color-text,0.8);
+    font-size: 15px; line-height: 1.7; color: var(--color-text-muted);
     transition: max-height 0.3s ease, padding 0.3s ease;
   }
   &--open {
@@ -152,44 +154,46 @@
 
 // ===== CONTACT =====
 .contact {
-  background-color: $color-bg-light;
+  background-color: var(--color-bg-soft);
   &__inner {
     display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
     @media (max-width: $bp-tablet) { grid-template-columns: 1fr; }
   }
-  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; margin-bottom: 16px; }
-  &__text { font-size: 15px; line-height: 1.7; color: rgba($color-text,0.8); margin-bottom: 24px; }
+  &__title { font-size: clamp(22px, 3vw, 34px); font-weight: 700; margin-bottom: 16px; color: var(--color-text); }
+  &__text { font-size: 15px; line-height: 1.7; color: var(--color-text-muted); margin-bottom: 24px; }
   &__channels { display: flex; flex-direction: column; gap: 16px; }
   &__channel {
     display: flex; align-items: center; gap: 14px;
-    padding: 16px 20px; border-radius: 14px; background: $color-white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s;
+    padding: 16px 20px; border-radius: 14px; background: var(--color-surface);
+    box-shadow: var(--shadow-sm); transition: transform 0.2s;
     &:hover { transform: translateX(4px); }
     img { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; }
-    span { font-size: 15px; font-weight: 600; color: $color-black; }
+    span { font-size: 15px; font-weight: 600; color: var(--color-text); }
   }
 }
 .form {
-  background: $color-white; border-radius: 20px; padding: 36px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  &__title { font-size: 20px; font-weight: 700; margin-bottom: 24px; color: $color-black; }
+  background: var(--color-surface); border-radius: 20px; padding: 36px;
+  box-shadow: var(--shadow-lg);
+  &__title { font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--color-text); }
   &__group { margin-bottom: 18px; }
-  &__label { display: block; font-size: 13px; font-weight: 600; color: $color-text; margin-bottom: 6px; }
+  &__label { display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 6px; }
   &__input, &__textarea {
-    width: 100%; padding: 12px 16px; border: 2px solid rgba($color-pink,0.2);
+    width: 100%; padding: 12px 16px; border: 2px solid var(--color-border-pink-soft);
     border-radius: 10px; font-size: 15px; font-family: inherit;
+    background-color: var(--color-bg); color: var(--color-text);
     transition: border-color 0.2s; outline: none;
-    &:focus { border-color: $color-pink; }
+    &:focus { border-color: var(--color-pink); }
+    &::placeholder { color: var(--color-text-soft); }
   }
   &__textarea { min-height: 120px; resize: vertical; }
   &__btn {
     width: 100%; padding: 14px; border-radius: 40px;
-    background-color: $color-pink; color: $color-white;
+    background-color: var(--color-pink); color: var(--color-on-brand);
     font-size: 16px; font-weight: 700; font-family: inherit;
     transition: background-color 0.2s;
-    &:hover { background-color: darken($color-pink, 10%); }
+    &:hover { background-color: var(--color-pink-hover); }
   }
-  &__note { font-size: 12px; color: rgba($color-text,0.5); margin-top: 12px; text-align: center; }
+  &__note { font-size: 12px; color: var(--color-text-soft); margin-top: 12px; text-align: center; }
 }
 
 // ===== SOCIAL PROMO =====
@@ -204,8 +208,8 @@
     img { width: 100%; height: 100%; object-fit: cover; }
     &-label {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 16px 20px; background: rgba($color-pink, 0.8);
-      color: $color-white; font-size: 16px; font-weight: 700; text-align: center;
+      padding: 16px 20px; background: var(--color-pink-promo);
+      color: #fff; font-size: 16px; font-weight: 700; text-align: center;
     }
   }
 }

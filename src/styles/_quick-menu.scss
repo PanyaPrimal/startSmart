@@ -4,14 +4,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: $color-white;
+  background-color: var(--color-bg);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.25s ease;
 
   &__title {
     font-size: 28px;
     font-weight: 700;
-    color: $color-black;
+    color: var(--color-text);
     margin-bottom: 40px;
     text-align: center;
   }
@@ -31,13 +32,13 @@
     border-radius: 60px;
     font-size: 18px;
     font-weight: 500;
-    color: $color-white;
+    color: var(--color-on-brand);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: transform 0.2s, box-shadow 0.2s;
-    &:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-    &--pink { background-color: $color-pink; }
-    &--teal { background-color: $color-teal; }
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    &:hover { transform: translateY(-2px); box-shadow: var(--shadow-pop); }
+    &--pink { background-color: var(--color-pink); }
+    &--teal { background-color: var(--color-teal); }
     @media (max-width: $bp-mobile) { width: 100%; max-width: 320px; }
   }
   &__deco {
