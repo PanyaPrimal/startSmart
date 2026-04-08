@@ -1,0 +1,253 @@
+# Sveltia CMS configuration for StartSmart
+# -----------------------------------------
+# Backend: local proxy for development. Run `npx @sveltia/cms-proxy-server`
+# from the repo root to let the admin write directly to src/content/*.
+# Swap to github / gitlab when we set up hosted auth.
+backend:
+  name: proxy
+  proxy_url: http://localhost:8081/api/v1
+  branch: redesign-astro
+
+local_backend: true
+
+media_folder: public/images
+public_folder: /images
+
+# Reusable field partials ---------------------------------------------------
+common:
+  image_field: &image_field
+    name: photo
+    label: Зображення
+    widget: object
+    fields:
+      - { name: src, label: Файл, widget: image }
+      - { name: srcDark, label: Файл (темна тема), widget: image, required: false }
+      - { name: alt, label: Alt, widget: string, required: false, default: '' }
+
+  rate_fields: &rate_fields
+    - { name: name, label: Назва, widget: string }
+    - { name: duration, label: Тривалість, widget: string, required: false }
+    - { name: price, label: Ціна, widget: string }
+    - { name: per, label: Підпис, widget: string, required: false }
+    - { name: href, label: Посилання, widget: string, default: '#contact' }
+    - { name: btnLabel, label: Напис кнопки, widget: string, default: 'Записатися' }
+    - { name: featured, label: Виділений?, widget: boolean, default: false }
+    - { name: note, label: Примітка, widget: string, required: false }
+
+  faq_fields: &faq_fields
+    - { name: question, label: Питання, widget: string }
+    - { name: answer, label: Відповідь, widget: text }
+
+# Collections ---------------------------------------------------------------
+collections:
+  - name: settings
+    label: Налаштування сайту
+    files:
+      - name: site
+        label: Сайт
+        file: src/content/settings/site.json
+        format: json
+        fields:
+          - { name: siteName, label: Назва, widget: string }
+          - { name: tagline, label: Слоган, widget: string, required: false }
+          - { name: email, label: Email, widget: string }
+          - name: socials
+            label: Соцмережі
+            widget: object
+            fields:
+              - { name: facebook, label: Facebook, widget: string, required: false }
+              - { name: telegram, label: Telegram, widget: string, required: false }
+              - { name: instagram, label: Instagram, widget: string, required: false }
+          - name: nav
+            label: Меню
+            widget: list
+            fields:
+              - { name: label, label: Напис, widget: string }
+              - { name: href, label: Посилання, widget: string }
+          - { name: footerCopy, label: Футер copyright, widget: string }
+
+  - name: teachers
+    label: Викладачі
+    label_singular: Викладач
+    folder: src/content/teachers
+    format: json
+    extension: json
+    create: true
+    identifier_field: name
+    fields:
+      - { name: name, label: Імʼя, widget: string }
+      - *image_field
+      - { name: quote, label: Цитата, widget: string, required: false }
+      - { name: info, label: Інформація, widget: text }
+      - name: languages
+        label: Мови
+        widget: select
+        multiple: true
+        options: ['english', 'polish', 'ukrainian', 'russian']
+        default: []
+      - { name: order, label: Порядок, widget: number, default: 0, value_type: int }
+
+  - name: formats
+    label: Формати навчання
+    label_singular: Формат
+    folder: src/content/formats
+    format: json
+    extension: json
+    create: true
+    identifier_field: title
+    fields:
+      - { name: title, label: Повна назва, widget: string }
+      - { name: shortTitle, label: Коротка назва, widget: string }
+      - { name: subtitle, label: Підзаголовок, widget: text }
+      - { name: priceFrom, label: Ціна від, widget: string }
+      - name: heroImage
+        label: Hero зображення
+        widget: object
+        fields:
+          - { name: src, label: Файл, widget: image }
+          - { name: srcDark, label: Файл (темна тема), widget: image, required: false }
+          - { name: alt, label: Alt, widget: string, required: false }
+      - name: heroOverlay
+        label: Hero оверлей
+        widget: select
+        options: ['pink', 'teal', 'dark']
+        default: pink
+      - name: cardIcon
+        label: Іконка для картки
+        widget: object
+        required: false
+        fields:
+          - { name: src, label: Файл, widget: image }
+          - { name: alt, label: Alt, widget: string, required: false }
+      - { name: cardDescription, label: Опис у картці, widget: text, required: false }
+      - { name: href, label: URL сторінки, widget: string }
+      - { name: ratesNote, label: Примітка до цін, widget: string, required: false }
+      - name: rates
+        label: Тарифи
+        widget: list
+        fields: *rate_fields
+      - name: faq
+        label: Часті питання
+        widget: list
+        required: false
+        fields: *faq_fields
+      - { name: order, label: Порядок, widget: number, default: 0, value_type: int }
+
+  - name: pages
+    label: Сторінки
+    label_singular: Сторінка
+    folder: src/content/pages
+    format: json
+    extension: json
+    create: true
+    identifier_field: title
+    fields:
+      - { name: title, label: Заголовок (SEO), widget: string }
+
+      - name: hero
+        label: Hero-секція
+        widget: object
+        required: false
+        fields:
+          - { name: title, label: Заголовок, widget: string }
+          - { name: subtitle, label: Підзаголовок, widget: text, required: false }
+          - name: image
+            label: Фонове зображення
+            widget: object
+            required: false
+            fields:
+              - { name: src, label: Файл, widget: image }
+              - { name: srcDark, label: Файл (темна тема), widget: image, required: false }
+              - { name: alt, label: Alt, widget: string, required: false }
+          - name: overlay
+            label: Колір оверлею
+            widget: select
+            options: ['pink', 'teal', 'dark']
+            default: pink
+          - { name: ctaLabel, label: Напис CTA, widget: string, required: false }
+          - { name: ctaHref, label: Посилання CTA, widget: string, required: false }
+
+      - name: about
+        label: Секція "Про"
+        widget: object
+        required: false
+        fields:
+          - { name: label, label: Підпис, widget: string, required: false }
+          - { name: title, label: Заголовок, widget: string }
+          - { name: paragraphs, label: Абзаци, widget: list, field: { name: text, widget: text }, required: false }
+          - { name: bullets, label: Список ✓, widget: list, field: { name: text, widget: string }, required: false }
+          - name: image
+            label: Зображення
+            widget: object
+            required: false
+            fields:
+              - { name: src, label: Файл, widget: image }
+              - { name: alt, label: Alt, widget: string, required: false }
+
+      - name: features
+        label: Секція Features
+        widget: object
+        required: false
+        fields:
+          - { name: title, label: Заголовок секції, widget: string }
+          - name: items
+            label: Пункти
+            widget: list
+            fields:
+              - { name: icon, label: Емодзі, widget: string }
+              - { name: title, label: Напис, widget: string }
+
+      - { name: methodsTitle, label: Заголовок "Види навчання", widget: string, required: false }
+      - name: methods
+        label: Методи (референси на formats)
+        widget: list
+        required: false
+        field: { name: format, label: Формат, widget: relation, collection: formats, value_field: '{{slug}}', search_fields: ['title', 'shortTitle'], display_fields: ['title'] }
+
+      - { name: ratesTitle, label: Заголовок секції цін, widget: string, required: false }
+      - name: rates
+        label: Тарифи на сторінці
+        widget: list
+        required: false
+        fields: *rate_fields
+
+      - { name: teachersTitle, label: Заголовок "Викладачі", widget: string, required: false }
+      - name: teachers
+        label: Викладачі (референси)
+        widget: list
+        required: false
+        field: { name: teacher, label: Викладач, widget: relation, collection: teachers, value_field: '{{slug}}', search_fields: ['name'], display_fields: ['name'] }
+
+      - { name: faqTitle, label: Заголовок FAQ, widget: string, required: false }
+      - name: faq
+        label: FAQ
+        widget: list
+        required: false
+        fields: *faq_fields
+
+      - name: contact
+        label: Секція контактів
+        widget: object
+        required: false
+        fields:
+          - { name: title, label: Заголовок, widget: string }
+          - { name: text, label: Текст, widget: text }
+          - { name: formTitle, label: Заголовок форми, widget: string }
+
+      - name: quickMenu
+        label: Quick-menu (головна)
+        widget: object
+        required: false
+        fields:
+          - { name: title, label: Заголовок, widget: string }
+          - name: buttons
+            label: Кнопки
+            widget: list
+            fields:
+              - { name: label, label: Напис, widget: string }
+              - { name: href, label: Посилання, widget: string }
+              - name: color
+                label: Колір
+                widget: select
+                options: ['pink', 'teal']
+              - { name: external, label: Зовнішнє посилання, widget: boolean, default: false }

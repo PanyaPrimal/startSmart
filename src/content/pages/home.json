@@ -1,0 +1,12 @@
+{
+  "title": "Головна",
+  "quickMenu": {
+    "title": "Welcome to StartSmart",
+    "buttons": [
+      { "label": "English School", "href": "/english_school", "color": "pink", "external": false },
+      { "label": "Szkoła Językowa", "href": "/polish", "color": "teal", "external": false },
+      { "label": "Telegram", "href": "https://t.me/startsmart_world", "color": "teal", "external": true },
+      { "label": "Instagram", "href": "https://instagram.com/startsmart_world", "color": "pink", "external": true }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Szkoła Językowa",
+  "hero": {
+    "title": "Szkoła Językowa",
+    "subtitle": "Jesteśmy małą szkołą językową! Lekcje dla każdego poziomu od A0 do C1",
+    "image": { "src": "/images/Hat_2.jpg", "alt": "Szkoła Językowa" },
+    "overlay": "teal",
+    "ctaLabel": "Co oferujemy?",
+    "ctaHref": "#offer"
+  },
+  "about": {
+    "label": "Nasza oferta",
+    "title": "Co oferujemy?",
+    "bullets": [
+      "Lekcje ukraińskiego, rosyjskiego, angielskiego i polskiego dla cudzoziemców",
+      "Lekcje na każdym poziomie od A0 do C1",
+      "Lekcje z native speakerami",
+      "Indywidualne i grupowe lekcje on-line",
+      "Dla dzieci i dorosłych"
+    ],
+    "paragraphs": [
+      "Zachęcamy do pierwszej próbnej lekcji dla ustalenia poziomu i omówienia szczegółów. Proponujemy wolne terminy zajęć przez Skype / Zoom / Teams.",
+      "Proszę o kontakt przez email lub WhatsApp. <strong>Welcome! :)</strong>"
+    ],
+    "image": { "src": "/images/berdPink_2.png", "alt": "Szkoła językowa" }
+  },
+  "ratesTitle": "ЦІНИ / CENY",
+  "rates": [
+    { "name": "Lekcje indywidualne", "duration": "60 хв / 60 min", "price": "50 zł", "per": "za godzinę", "featured": false },
+    { "name": "Lekcje parne", "duration": "60 хв / 60 min", "price": "35 zł", "per": "za godzinę / od osoby", "featured": true },
+    { "name": "Lekcje grupowe", "duration": "80–90 хв / min", "price": "od 20 zł", "per": "za godzinę / od osoby", "featured": false }
+  ],
+  "teachersTitle": "Poznaj naszych lektorów",
+  "teachers": ["evgenia", "svitlana", "anastasia", "valeria"],
+  "contact": {
+    "title": "Kontakt / Зв'яжіться",
+    "text": "Pytania? Napisz do nas! Zawsze chętnie odpowiemy.",
+    "formTitle": "Zapisz się / Записатися"
+  }
+}

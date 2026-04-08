@@ -1,0 +1,20 @@
+{
+  "siteName": "StartSmart",
+  "tagline": "Мовна студія",
+  "email": "startsmart.poltava@gmail.com",
+  "socials": {
+    "facebook": "https://www.facebook.com/startsmartplt",
+    "telegram": "https://t.me/startsmart_world",
+    "instagram": "https://instagram.com/startsmart_world"
+  },
+  "nav": [
+    { "label": "Головна", "href": "/" },
+    { "label": "Про школу", "href": "/english_school#about" },
+    { "label": "Наші курси", "href": "/english_school#courses" },
+    { "label": "Види навчання", "href": "/english_school#methods" },
+    { "label": "Ціни", "href": "/english_school#rates" },
+    { "label": "Викладачі", "href": "/english_school#teachers" },
+    { "label": "Питання", "href": "/english_school#questions" }
+  ],
+  "footerCopy": "© 2024 StartSmart. Всі права захищені."
+}

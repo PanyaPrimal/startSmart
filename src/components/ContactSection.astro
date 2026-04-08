@@ -1,0 +1,71 @@
+---
+import { getEntry } from 'astro:content';
+interface Props {
+  title: string;
+  text: string;
+  formTitle: string;
+  formIdPrefix?: string;
+  showInstagram?: boolean;
+  showEmail?: boolean;
+  id?: string;
+}
+const {
+  title,
+  text,
+  formTitle,
+  formIdPrefix = 'contact',
+  showInstagram = true,
+  showEmail = false,
+  id = 'contact',
+} = Astro.props;
+
+const site = await getEntry('settings', 'site');
+const s = site!.data;
+---
+<section class="section contact" id={id}>
+  <div class="container">
+    <div class="contact__inner">
+      <div class="contact__info">
+        <h2 class="contact__title">{title}</h2>
+        <p class="contact__text">{text}</p>
+        <div class="contact__channels">
+          {s.socials.telegram && (
+            <a href={s.socials.telegram} class="contact__channel" target="_blank" rel="noopener">
+              <img src="/images/telegramm.jpg" alt="Telegram" />
+              <span>Telegram</span>
+            </a>
+          )}
+          {showInstagram && s.socials.instagram && (
+            <a href={s.socials.instagram} class="contact__channel" target="_blank" rel="noopener">
+              <img src="/images/instagram.jpg" alt="Instagram" />
+              <span>Instagram</span>
+            </a>
+          )}
+          {showEmail && (
+            <a href={`mailto:${s.email}`} class="contact__channel">
+              <span>📧</span>
+              <span>{s.email}</span>
+            </a>
+          )}
+        </div>
+      </div>
+      <form class="form" action="#" method="post">
+        <h3 class="form__title">{formTitle}</h3>
+        <div class="form__group">
+          <label class="form__label" for={`${formIdPrefix}-name`}>Ваше ім'я</label>
+          <input class="form__input" type="text" id={`${formIdPrefix}-name`} name="name" placeholder="Ім'я" required />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for={`${formIdPrefix}-phone`}>Телефон або Telegram</label>
+          <input class="form__input" type="text" id={`${formIdPrefix}-phone`} name="phone" placeholder="+380..." />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for={`${formIdPrefix}-msg`}>Коментар</label>
+          <textarea class="form__textarea" id={`${formIdPrefix}-msg`} name="message" placeholder="Рівень, мета, зручний час..."></textarea>
+        </div>
+        <button class="form__btn" type="submit">Надіслати</button>
+        <p class="form__note">Натискаючи кнопку, ви даєте згоду на обробку персональних даних</p>
+      </form>
+    </div>
+  </div>
+</section>

@@ -7,6 +7,9 @@
   overflow: hidden;
   &__bg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; }
   &__overlay { position: absolute; inset: 0; background: var(--color-hero-overlay); z-index: 1; }
+  &--overlay-pink .hero__overlay { background: rgba(225, 112, 136, 0.55); }
+  &--overlay-teal .hero__overlay { background: rgba(101, 185, 168, 0.55); }
+  &--overlay-dark .hero__overlay { background: var(--color-hero-overlay); }
   &__content { position: relative; z-index: 2; text-align: center; width: 100%; padding: 80px 20px; }
   &__title {
     font-size: clamp(28px, 5vw, 52px);
@@ -40,6 +43,17 @@
   &__title { font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; color: var(--color-text); margin-bottom: 20px; line-height: 1.2; }
   &__text { font-size: 15px; line-height: 1.7; color: var(--color-text-muted); margin-bottom: 14px; }
   &__quote { font-style: italic; color: var(--color-pink); font-size: 15px; margin-top: 16px; }
+  &__bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: var(--color-text-muted);
+    li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.6; }
+  }
+  &__tick { color: var(--color-teal); font-weight: 700; }
 }
 
 // ===== FEATURES =====

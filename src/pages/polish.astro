@@ -1,134 +1,65 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import RateGrid from '../components/RateGrid.astro';
+import TeacherGrid from '../components/TeacherGrid.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+const page = (await getEntry('pages', 'polish'))!.data;
 ---
-<BaseLayout title="Szkoła Językowa">
-  <section class="hero" id="start">
-    <div class="hero__bg" style="background-image:url('/images/Hat_2.jpg');"></div>
-    <div class="hero__overlay" style="background:rgba(101,185,168,0.55);"></div>
-    <div class="hero__content container">
-      <h1 class="hero__title">Szkoła Językowa</h1>
-      <p class="hero__subtitle">Jesteśmy małą szkołą językową! Lekcje dla każdego poziomu od A0 do C1</p>
-      <a href="#offer" class="hero__cta">Co oferujemy?</a>
-    </div>
-  </section>
+<BaseLayout title={page.title}>
+  {page.hero && (
+    <Hero
+      title={page.hero.title}
+      subtitle={page.hero.subtitle}
+      image={page.hero.image}
+      overlay={page.hero.overlay}
+      ctaLabel={page.hero.ctaLabel}
+      ctaHref={page.hero.ctaHref}
+    />
+  )}
 
-  <section class="section about" id="offer">
-    <div class="container">
-      <div class="about__inner">
-        <div class="about__content">
-          <p class="about__label">Nasza oferta</p>
-          <h2 class="about__title">Co oferujemy?</h2>
-          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
-            <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Lekcje ukraińskiego, rosyjskiego, angielskiego i polskiego dla cudzoziemców</span></li>
-            <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Lekcje na każdym poziomie od A0 do C1</span></li>
-            <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Lekcje z native speakerami</span></li>
-            <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Indywidualne i grupowe lekcje on-line</span></li>
-            <li style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#65b9a8;font-weight:700;">✓</span><span>Dla dzieci i dorosłych</span></li>
-          </ul>
-          <p class="about__text">Zachęcamy do pierwszej próbnej lekcji dla ustalenia poziomu i omówienia szczegółów. Proponujemy wolne terminy zajęć przez Skype / Zoom / Teams.</p>
-          <p class="about__text">Proszę o kontakt przez email lub WhatsApp. <strong>Welcome! :)</strong></p>
-        </div>
-        <div class="about__image">
-          <img src="/images/berdPink_2.png" alt="Szkoła językowa" />
+  {page.about && (
+    <section class="section about" id="offer">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__content">
+            {page.about.label && <p class="about__label">{page.about.label}</p>}
+            <h2 class="about__title">{page.about.title}</h2>
+            {page.about.bullets.length > 0 && (
+              <ul class="about__bullets">
+                {page.about.bullets.map((b) => (
+                  <li><span class="about__tick">✓</span><span>{b}</span></li>
+                ))}
+              </ul>
+            )}
+            {page.about.paragraphs.map((p) => <p class="about__text" set:html={p} />)}
+          </div>
+          {page.about.image && (
+            <div class="about__image">
+              <img src={page.about.image.src} alt={page.about.image.alt || ''} />
+            </div>
+          )}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <section class="section rates" id="rates">
-    <div class="container">
-      <h2 class="rates__title">ЦІНИ / CENY</h2>
-      <div class="rates__grid">
-        <div class="rate-card">
-          <h3 class="rate-card__name">Lekcje indywidualne</h3>
-          <p class="rate-card__duration">60 хв / 60 min</p>
-          <p class="rate-card__price">50 zł</p>
-          <p class="rate-card__per">za godzinę</p>
-          <a href="#contact" class="rate-card__btn">Записатися</a>
-        </div>
-        <div class="rate-card rate-card--featured">
-          <h3 class="rate-card__name">Lekcje parne</h3>
-          <p class="rate-card__duration">60 хв / 60 min</p>
-          <p class="rate-card__price">35 zł</p>
-          <p class="rate-card__per">za godzinę / od osoby</p>
-          <a href="#contact" class="rate-card__btn">Записатися</a>
-        </div>
-        <div class="rate-card">
-          <h3 class="rate-card__name">Lekcje grupowe</h3>
-          <p class="rate-card__duration">80–90 хв / min</p>
-          <p class="rate-card__price">od 20 zł</p>
-          <p class="rate-card__per">za godzinę / od osoby</p>
-          <a href="#contact" class="rate-card__btn">Записатися</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  {page.rates.length > 0 && <RateGrid title={page.ratesTitle} rates={page.rates} />}
 
-  <section class="section teachers" id="teachers">
-    <div class="container">
-      <h2 class="teachers__title">Poznaj naszych lektorów</h2>
-      <div class="teachers__grid">
-        <div class="teacher-card">
-          <img class="teacher-card__photo" src="/images/Hat_4.jpg" alt="Evgenia" />
-          <h3 class="teacher-card__name">EVGENIA</h3>
-          <p class="teacher-card__quote">„Organizuję przyjemną i produktywną pracę w grupach".</p>
-          <p class="teacher-card__info">Native-speaker ukraińskiego · 3 lata doświadczenia · Uczy dzieci, młodzież i dorosłych · Dyplomowany nauczyciel języka polskiego i ukraińskiego · Wykształcenie wyższe filologiczne i coachingowe</p>
-        </div>
-        <div class="teacher-card">
-          <img class="teacher-card__photo" src="/images/berdPink_4.png" alt="Svitlana" />
-          <h3 class="teacher-card__name">SVITLANA</h3>
-          <p class="teacher-card__quote">BIZNES COACH, LEKTORKA JĘZYKA ANGIELSKIEGO, POLSKIEGO, UKRAIŃSKIEGO I ROSYJSKIEGO.</p>
-          <p class="teacher-card__info">Założycielka szkoły Start-Smart · Posiada doświadczenie w nauczaniu w środowisku międzynarodowym (korporacje brytyjskie i amerykańskie) · Opracowała skuteczną metodę nauki języka</p>
-        </div>
-        <div class="teacher-card">
-          <img class="teacher-card__photo" src="/images/Hat_2.jpg" alt="Anastazja" />
-          <h3 class="teacher-card__name">ANASTAZJA</h3>
-          <p class="teacher-card__quote">„Pomogę Ci nauczyć się języka w najprostszy dla Ciebie sposób".</p>
-          <p class="teacher-card__info">Poziom języka angielskiego C1 · 2 lata doświadczenia · Uczy dzieci i młodzież · Certyfikowany nauczyciel języka angielskiego i ukraińskiego</p>
-        </div>
-        <div class="teacher-card">
-          <img class="teacher-card__photo" src="/images/Hat_2.jpg" alt="Valeriya" />
-          <h3 class="teacher-card__name">VALERIYA</h3>
-          <p class="teacher-card__quote">„Nasze lekcje układam indywidualnie, dostosowując je do potrzeb ucznia".</p>
-          <p class="teacher-card__info">Native-speaker ukraińskiego · 3 lata doświadczenia · Uczy dzieci, młodzież i dorosłych · Dyplomowany nauczyciel języka polskiego i ukraińskiego</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  {page.teachers.length > 0 && (
+    <TeacherGrid title={page.teachersTitle} teachers={page.teachers} />
+  )}
 
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="contact__inner">
-        <div class="contact__info">
-          <h2 class="contact__title">Kontakt / Зв'яжіться</h2>
-          <p class="contact__text">Pytania? Napisz do nas! Zawsze chętnie odpowiemy.</p>
-          <div class="contact__channels">
-            <a href="https://t.me/startsmart_world" class="contact__channel" target="_blank" rel="noopener">
-              <img src="/images/telegramm.jpg" alt="Telegram" />
-              <span>Telegram</span>
-            </a>
-            <a href="mailto:startsmart.poltava@gmail.com" class="contact__channel">
-              <span>📧</span><span>startsmart.poltava@gmail.com</span>
-            </a>
-          </div>
-        </div>
-        <form class="form" action="#" method="post">
-          <h3 class="form__title">Zapisz się / Записатися</h3>
-          <div class="form__group">
-            <label class="form__label" for="pl-name">Imię / Ім'я</label>
-            <input class="form__input" type="text" id="pl-name" name="name" placeholder="Jan / Іван" required />
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="pl-phone">Telefon / WhatsApp</label>
-            <input class="form__input" type="text" id="pl-phone" name="phone" placeholder="+48..." />
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="pl-msg">Wiadomość / Повідомлення</label>
-            <textarea class="form__textarea" id="pl-msg" name="message" placeholder="Poziom, cele, preferowany termin..."></textarea>
-          </div>
-          <button class="form__btn" type="submit">Wyślij / Надіслати</button>
-        </form>
-      </div>
-    </div>
-  </section>
+  {page.contact && (
+    <ContactSection
+      title={page.contact.title}
+      text={page.contact.text}
+      formTitle={page.contact.formTitle}
+      formIdPrefix="pl"
+      showInstagram={false}
+      showEmail
+    />
+  )}
 </BaseLayout>

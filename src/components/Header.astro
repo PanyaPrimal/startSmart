@@ -1,32 +1,36 @@
 ---
+import { getEntry } from 'astro:content';
 import VersionSwitcher from './VersionSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
+const s = (await getEntry('settings', 'site'))!.data;
 ---
 <header class="layout__header header" id="top">
   <div class="container">
     <div class="header__inner">
-      <a href="/index.html" class="header__logo">Start<span>Smart</span></a>
+      <a href="/" class="header__logo">Start<span>Smart</span></a>
       <nav class="header__nav nav">
         <ul class="nav__list">
-          <li class="nav__item"><a href="/index.html" class="nav__link">Головна</a></li>
-          <li class="nav__item"><a href="/english_school.html#about" class="nav__link">Про школу</a></li>
-          <li class="nav__item"><a href="/english_school.html#courses" class="nav__link">Наші курси</a></li>
-          <li class="nav__item"><a href="/english_school.html#methods" class="nav__link">Види навчання</a></li>
-          <li class="nav__item"><a href="/english_school.html#rates" class="nav__link">Ціни</a></li>
-          <li class="nav__item"><a href="/english_school.html#teachers" class="nav__link">Викладачі</a></li>
-          <li class="nav__item"><a href="/english_school.html#questions" class="nav__link">Питання</a></li>
+          {s.nav.map((item) => (
+            <li class="nav__item"><a href={item.href} class="nav__link">{item.label}</a></li>
+          ))}
         </ul>
       </nav>
       <div class="header__socials">
-        <a href="https://www.facebook.com/startsmartplt" class="header__social-link header__social-link--fb" target="_blank" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="https://t.me/startsmart_world" class="header__social-link header__social-link--telegram" target="_blank" aria-label="Telegram">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-        </a>
-        <a href="https://instagram.com/startsmart_world" class="header__social-link header__social-link--instagram" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white"/></svg>
-        </a>
+        {s.socials.facebook && (
+          <a href={s.socials.facebook} class="header__social-link header__social-link--fb" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        )}
+        {s.socials.telegram && (
+          <a href={s.socials.telegram} class="header__social-link header__social-link--telegram" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+        )}
+        {s.socials.instagram && (
+          <a href={s.socials.instagram} class="header__social-link header__social-link--instagram" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white"/></svg>
+          </a>
+        )}
       </div>
       <ThemeToggle />
       <div class="header__version-wrap"><VersionSwitcher /></div>

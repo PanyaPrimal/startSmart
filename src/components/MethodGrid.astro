@@ -1,0 +1,28 @@
+---
+import { getEntries, type CollectionEntry } from 'astro:content';
+interface Props {
+  title?: string;
+  formats: CollectionEntry<'pages'>['data']['methods'];
+  id?: string;
+}
+const { title = 'ВИДИ НАВЧАННЯ', formats, id = 'methods' } = Astro.props;
+const entries = await getEntries(formats);
+---
+<section class="section methods" id={id}>
+  <div class="container">
+    <h2 class="methods__title">{title}</h2>
+    <div class="methods__grid">
+      {entries.map((f) => (
+        <div class="method-card">
+          {f.data.cardIcon && (
+            <img class="method-card__icon" src={f.data.cardIcon.src} alt={f.data.cardIcon.alt || f.data.shortTitle} />
+          )}
+          <h3 class="method-card__title">{f.data.shortTitle}</h3>
+          {f.data.cardDescription && <p class="method-card__text">{f.data.cardDescription}</p>}
+          <p class="method-card__price">{f.data.priceFrom}</p>
+          <a href={f.data.href} class="method-card__btn">Детальніше</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

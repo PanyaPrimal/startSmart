@@ -1,0 +1,25 @@
+---
+import { getEntries, type CollectionEntry } from 'astro:content';
+interface Props {
+  title?: string;
+  teachers: CollectionEntry<'pages'>['data']['teachers'];
+  id?: string;
+}
+const { title = 'ВИКЛАДАЧІ', teachers, id = 'teachers' } = Astro.props;
+const entries = await getEntries(teachers);
+---
+<section class="section teachers" id={id}>
+  <div class="container">
+    <h2 class="teachers__title">{title}</h2>
+    <div class="teachers__grid">
+      {entries.map((t) => (
+        <div class="teacher-card">
+          <img class="teacher-card__photo" src={t.data.photo.src} alt={t.data.photo.alt || t.data.name} />
+          <h3 class="teacher-card__name">{t.data.name}</h3>
+          {t.data.quote && <p class="teacher-card__quote">{t.data.quote}</p>}
+          <p class="teacher-card__info">{t.data.info}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+interface Rate {
+  name: string;
+  duration?: string;
+  price: string;
+  per?: string;
+  href?: string;
+  btnLabel?: string;
+  featured?: boolean;
+  note?: string;
+}
+interface Props {
+  title?: string;
+  note?: string;
+  rates: Rate[];
+  id?: string;
+  pinkBg?: boolean;
+  other?: { title: string; rates: Rate[] };
+}
+const { title, note, rates, id = 'rates', pinkBg = false, other } = Astro.props;
+---
+<section class={`section rates${pinkBg ? ' section--pink-bg' : ''}`} id={id}>
+  <div class="container">
+    {title && <h2 class="rates__title">{title}</h2>}
+    {note && <p class="rates__note">{note}</p>}
+    <div class="rates__grid">
+      {rates.map((r) => (
+        <div class={`rate-card${r.featured ? ' rate-card--featured' : ''}`}>
+          <h3 class="rate-card__name">{r.name}</h3>
+          {r.duration && <p class="rate-card__duration">{r.duration}</p>}
+          <p class="rate-card__price">{r.price}</p>
+          {r.per && <p class="rate-card__per">{r.per}</p>}
+          <a href={r.href ?? '#contact'} class="rate-card__btn">{r.btnLabel ?? 'Записатися'}</a>
+          {r.note && <p class="rate-card__note">{r.note}</p>}
+        </div>
+      ))}
+    </div>
+    {other && (
+      <div class="rates__other">
+        <h3 class="rates__other-title">{other.title}</h3>
+        <div class="rates__other-grid">
+          {other.rates.map((r) => (
+            <div class="rate-card">
+              <h3 class="rate-card__name">{r.name}</h3>
+              <p class="rate-card__price">{r.price}</p>
+              <a href={r.href ?? '#'} class="rate-card__btn">{r.btnLabel ?? 'Детальніше'}</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
