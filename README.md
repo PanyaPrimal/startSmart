@@ -2,6 +2,12 @@
 
 Онлайн-школа мов: English School + Szkoła Językowa. Astro + SCSS, тёмна/світла тема, контент через Sveltia CMS.
 
+## Документація
+
+- **[docs/ADMIN.md](docs/ADMIN.md)** — як користуватися адмінкою `/admin` (для редактора контенту).
+- **[docs/DEPLOY.md](docs/DEPLOY.md)** — збірка, хостинг на Cloudflare Pages, підключення домену, налаштування GitHub OAuth для продакшн-адмінки.
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — структура проєкту, потік даних, колекції, темізація, як додавати нове (для розробника).
+
 ## Команди
 
 ```bash
