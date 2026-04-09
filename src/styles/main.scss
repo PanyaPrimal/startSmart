@@ -1,9 +1,8 @@
-@import 'variables';
-@import 'tokens';
-@import 'reset';
-@import 'layout';
-@import 'header';
-@import 'nav';
-@import 'footer';
-@import 'quick-menu';
-@import 'school';
+@use 'tokens';
+@use 'reset';
+@use 'layout';
+@use 'header';
+@use 'nav';
+@use 'footer';
+@use 'quick-menu';
+@use 'school';
