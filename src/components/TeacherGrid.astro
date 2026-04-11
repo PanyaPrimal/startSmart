@@ -1,5 +1,6 @@
 ---
 import { getEntries, type CollectionEntry } from 'astro:content';
+import { url } from '../utils/url';
 interface Props {
   title?: string;
   teachers: CollectionEntry<'pages'>['data']['teachers'];
@@ -14,7 +15,7 @@ const entries = await getEntries(teachers);
     <div class="teachers__grid">
       {entries.map((t) => (
         <div class="teacher-card">
-          <img class="teacher-card__photo" src={t.data.photo.src} alt={t.data.photo.alt || t.data.name} />
+          <img class="teacher-card__photo" src={url(t.data.photo.src)} alt={t.data.photo.alt || t.data.name} />
           <h3 class="teacher-card__name">{t.data.name}</h3>
           {t.data.quote && <p class="teacher-card__quote">{t.data.quote}</p>}
           <p class="teacher-card__info">{t.data.info}</p>

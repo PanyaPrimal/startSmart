@@ -5,6 +5,7 @@ import Hero from '../components/Hero.astro';
 import RateGrid from '../components/RateGrid.astro';
 import TeacherGrid from '../components/TeacherGrid.astro';
 import ContactSection from '../components/ContactSection.astro';
+import { url } from '../utils/url';
 
 const page = (await getEntry('pages', 'polish'))!.data;
 ---
@@ -38,7 +39,7 @@ const page = (await getEntry('pages', 'polish'))!.data;
           </div>
           {page.about.image && (
             <div class="about__image">
-              <img src={page.about.image.src} alt={page.about.image.alt || ''} />
+              <img src={url(page.about.image.src)} alt={page.about.image.alt || ''} />
             </div>
           )}
         </div>

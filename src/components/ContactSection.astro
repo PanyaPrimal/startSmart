@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import { url } from '../utils/url';
 interface Props {
   title: string;
   text: string;
@@ -31,13 +32,13 @@ const s = site!.data;
         <div class="contact__channels">
           {s.socials.telegram && (
             <a href={s.socials.telegram} class="contact__channel" target="_blank" rel="noopener">
-              <img src="/images/telegramm.jpg" alt="Telegram" />
+              <img src={url('/images/telegramm.jpg')} alt="Telegram" />
               <span>Telegram</span>
             </a>
           )}
           {showInstagram && s.socials.instagram && (
             <a href={s.socials.instagram} class="contact__channel" target="_blank" rel="noopener">
-              <img src="/images/instagram.jpg" alt="Instagram" />
+              <img src={url('/images/instagram.jpg')} alt="Instagram" />
               <span>Instagram</span>
             </a>
           )}

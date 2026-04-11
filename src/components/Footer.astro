@@ -1,11 +1,12 @@
 ---
 import { getEntry } from 'astro:content';
+import { url } from '../utils/url';
 const s = (await getEntry('settings', 'site'))!.data;
 ---
 <footer class="layout__footer footer">
   <div class="container">
     <div class="footer__inner">
-      <a href="/" class="footer__logo">{s.siteName}</a>
+      <a href={url('/')} class="footer__logo">{s.siteName}</a>
       <p class="footer__copy">{s.footerCopy} <a href={`mailto:${s.email}`}>{s.email}</a></p>
       <div class="footer__socials">
         {s.socials.facebook && (

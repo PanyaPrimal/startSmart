@@ -1,9 +1,10 @@
 ---
 // Список версий сайта. Добавляй сюда новые редизайны.
+const base = import.meta.env.BASE_URL;
 const versions = [
-  { value: '/',         label: 'v1 — Astro (поточна)' },
-  { value: '/legacy/index.html',  label: 'v0 — Оригінал' },
-  // { value: '/v2/',   label: 'v2 — Новий дизайн' },
+  { value: base,                     label: 'v1 — Astro (поточна)' },
+  { value: `${base}legacy/index.html`, label: 'v0 — Оригінал' },
+  // { value: `${base}v2/`,          label: 'v2 — Новий дизайн' },
 ];
 ---
 <div class="version-switcher">
@@ -20,12 +21,15 @@ const versions = [
     const select = document.getElementById('versionSelect');
     if (!select) return;
 
-    // Определяем текущую версию по URL
+    // The first option is the base (current Astro version). Any option whose
+    // value isn't just the base and whose prefix matches the current path wins.
     const path = window.location.pathname;
-    let current = '/';
+    const baseValue = select.options[0] ? select.options[0].value : '/';
+    let current = baseValue;
     for (const opt of select.options) {
+      if (opt.value === baseValue) continue;
       const prefix = opt.value.replace(/index\.html$/, '');
-      if (opt.value !== '/' && path.startsWith(prefix)) {
+      if (path.startsWith(prefix)) {
         current = opt.value;
         break;
       }

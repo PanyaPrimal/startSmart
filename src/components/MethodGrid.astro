@@ -1,5 +1,6 @@
 ---
 import { getEntries, type CollectionEntry } from 'astro:content';
+import { url } from '../utils/url';
 interface Props {
   title?: string;
   formats: CollectionEntry<'pages'>['data']['methods'];
@@ -15,12 +16,12 @@ const entries = await getEntries(formats);
       {entries.map((f) => (
         <div class="method-card">
           {f.data.cardIcon && (
-            <img class="method-card__icon" src={f.data.cardIcon.src} alt={f.data.cardIcon.alt || f.data.shortTitle} />
+            <img class="method-card__icon" src={url(f.data.cardIcon.src)} alt={f.data.cardIcon.alt || f.data.shortTitle} />
           )}
           <h3 class="method-card__title">{f.data.shortTitle}</h3>
           {f.data.cardDescription && <p class="method-card__text">{f.data.cardDescription}</p>}
           <p class="method-card__price">{f.data.priceFrom}</p>
-          <a href={f.data.href} class="method-card__btn">Детальніше</a>
+          <a href={url(f.data.href)} class="method-card__btn">Детальніше</a>
         </div>
       ))}
     </div>

@@ -1,4 +1,5 @@
 ---
+import { url } from '../utils/url';
 interface Rate {
   name: string;
   duration?: string;
@@ -30,7 +31,7 @@ const { title, note, rates, id = 'rates', pinkBg = false, other } = Astro.props;
           {r.duration && <p class="rate-card__duration">{r.duration}</p>}
           <p class="rate-card__price">{r.price}</p>
           {r.per && <p class="rate-card__per">{r.per}</p>}
-          <a href={r.href ?? '#contact'} class="rate-card__btn">{r.btnLabel ?? 'Записатися'}</a>
+          <a href={url(r.href ?? '#contact')} class="rate-card__btn">{r.btnLabel ?? 'Записатися'}</a>
           {r.note && <p class="rate-card__note">{r.note}</p>}
         </div>
       ))}
@@ -43,7 +44,7 @@ const { title, note, rates, id = 'rates', pinkBg = false, other } = Astro.props;
             <div class="rate-card">
               <h3 class="rate-card__name">{r.name}</h3>
               <p class="rate-card__price">{r.price}</p>
-              <a href={r.href ?? '#'} class="rate-card__btn">{r.btnLabel ?? 'Детальніше'}</a>
+              <a href={url(r.href ?? '#')} class="rate-card__btn">{r.btnLabel ?? 'Детальніше'}</a>
             </div>
           ))}
         </div>

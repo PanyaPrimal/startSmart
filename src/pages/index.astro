@@ -1,21 +1,22 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../utils/url';
 
 const page = (await getEntry('pages', 'home'))!.data;
 const qm = page.quickMenu!;
 ---
 <BaseLayout title={page.title}>
   <section class="quick-menu">
-    <img class="quick-menu__deco quick-menu__deco--tl" src="/images/GreenHat.png" alt="" aria-hidden="true" />
-    <img class="quick-menu__deco quick-menu__deco--tr" src="/images/Hat.png" alt="" aria-hidden="true" />
-    <img class="quick-menu__deco quick-menu__deco--bl" src="/images/GreenHat_2.png" alt="" aria-hidden="true" />
-    <img class="quick-menu__deco quick-menu__deco--br" src="/images/Hat_2.png" alt="" aria-hidden="true" />
+    <img class="quick-menu__deco quick-menu__deco--tl" src={url('/images/GreenHat.png')} alt="" aria-hidden="true" />
+    <img class="quick-menu__deco quick-menu__deco--tr" src={url('/images/Hat.png')} alt="" aria-hidden="true" />
+    <img class="quick-menu__deco quick-menu__deco--bl" src={url('/images/GreenHat_2.png')} alt="" aria-hidden="true" />
+    <img class="quick-menu__deco quick-menu__deco--br" src={url('/images/Hat_2.png')} alt="" aria-hidden="true" />
     <h1 class="quick-menu__title">{qm.title}</h1>
     <div class="quick-menu__grid">
       {qm.buttons.map((b) => (
         <a
-          href={b.href}
+          href={url(b.href)}
           class={`quick-menu__btn quick-menu__btn--${b.color}`}
           target={b.external ? '_blank' : undefined}
           rel={b.external ? 'noopener' : undefined}

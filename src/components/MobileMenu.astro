@@ -1,10 +1,11 @@
 ---
 import { getEntry } from 'astro:content';
+import { url } from '../utils/url';
 const s = (await getEntry('settings', 'site'))!.data;
 ---
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Закрити">✕</button>
   {s.nav.map((item) => (
-    <a href={item.href} class="mobile-menu__link">{item.label}</a>
+    <a href={url(item.href)} class="mobile-menu__link">{item.label}</a>
   ))}
 </nav>
