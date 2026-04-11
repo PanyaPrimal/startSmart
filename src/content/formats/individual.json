@@ -21,30 +21,21 @@
       "duration": "55 хв.",
       "price": "400 грн",
       "per": "за урок",
-      "href": "testlink.com",
-      "btnLabel": "test",
-      "featured": false,
-      "note": ""
+      "featured": false
     },
     {
       "name": "10 УРОКІВ",
       "duration": "10 × 55 хв.",
       "price": "3600 грн",
       "per": "пакет / Світлана",
-      "href": "testlink.com",
-      "btnLabel": "test",
-      "featured": true,
-      "note": ""
+      "featured": true
     },
     {
       "name": "10 УРОКІВ",
       "duration": "10 × 55 хв.",
       "price": "3150 грн",
       "per": "пакет / інші викладачі",
-      "href": "testlink.com",
-      "btnLabel": "hzklk",
-      "featured": false,
-      "note": ""
+      "featured": false
     }
   ],
   "faq": [

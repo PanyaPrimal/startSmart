@@ -27,8 +27,8 @@ common:
     - { name: duration, label: Тривалість, widget: string, required: false }
     - { name: price, label: Ціна, widget: string }
     - { name: per, label: Підпис, widget: string, required: false }
-    - { name: href, label: Посилання, widget: string, default: '#contact' }
-    - { name: btnLabel, label: Напис кнопки, widget: string, default: 'Записатися' }
+    - { name: href, label: Посилання, widget: string, default: '#contact', required: false }
+    - { name: btnLabel, label: Напис кнопки, widget: string, default: 'Записатися', required: false }
     - { name: featured, label: Виділений?, widget: boolean, default: false }
     - { name: note, label: Примітка, widget: string, required: false }
 
