@@ -2,9 +2,9 @@
 // Список версий сайта. Добавляй сюда новые редизайны.
 const base = import.meta.env.BASE_URL;
 const versions = [
-  { value: base,                     label: 'v1 — Astro (поточна)' },
+  { value: base,                       label: 'v1 — Astro (поточна)' },
+  { value: `${base}v2.html`,           label: 'v2 — Editorial' },
   { value: `${base}legacy/index.html`, label: 'v0 — Оригінал' },
-  // { value: `${base}v2/`,          label: 'v2 — Новий дизайн' },
 ];
 ---
 <div class="version-switcher">

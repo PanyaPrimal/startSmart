@@ -1,0 +1,1166 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import V2Layout from '../../layouts/V2Layout.astro';
+import { url } from '../../utils/url';
+
+const settings = (await getEntry('settings', 'site'))!.data;
+const english = (await getEntry('pages', 'english_school'))!.data;
+
+const formats = (await getCollection('formats')).sort((a, b) => a.data.order - b.data.order);
+const teachers = (await getCollection('teachers')).sort((a, b) => a.data.order - b.data.order);
+
+const year = new Date().getFullYear();
+const issueNumber = 'Nº 002';
+
+// Pull quote source — grab Svitlana's quote if present, fall back to first quoted teacher
+const quoteTeacher = teachers.find((t) => t.id === 'svitlana') ?? teachers.find((t) => t.data.quote);
+const pullQuote = quoteTeacher?.data.quote?.replace(/^"|"$/g, '').replace(/^"|"$/g, '');
+const pullQuoteAuthor = quoteTeacher?.data.name;
+
+const languageLabels: Record<string, string> = {
+  english: 'EN',
+  polish: 'PL',
+  ukrainian: 'UA',
+  russian: 'RU',
+};
+---
+<V2Layout title="StartSmart — Мовна студія" description={settings.tagline}>
+  <!-- =========================================================
+       MASTHEAD — magazine header
+       ========================================================= -->
+  <header class="masthead">
+    <div class="masthead__bar">
+      <span class="masthead__issue">{issueNumber}</span>
+      <span class="masthead__sep" aria-hidden="true">·</span>
+      <span class="masthead__place">Poltava / Online</span>
+      <span class="masthead__sep" aria-hidden="true">·</span>
+      <span class="masthead__year">{year}</span>
+      <span class="masthead__spacer"></span>
+      <button id="v2ThemeToggle" class="masthead__theme" type="button" aria-label="Перемкнути тему">
+        <span class="theme-dot" aria-hidden="true"></span>
+        <span class="theme-label">тема</span>
+      </button>
+    </div>
+    <div class="masthead__title-row">
+      <a href={url('/v2.html')} class="masthead__title">
+        <span class="masthead__title-main">StartSmart</span>
+        <span class="masthead__title-sub">— Мовна студія</span>
+      </a>
+      <nav class="masthead__nav" aria-label="Основна навігація">
+        <a href="#manifesto">Манiфест</a>
+        <a href="#formats">Формати</a>
+        <a href="#teachers">Викладачі</a>
+        <a href="#questions">Питання</a>
+        <a href="#contact" class="masthead__nav-cta">Запис →</a>
+      </nav>
+    </div>
+    <hr class="rule rule--double" />
+  </header>
+
+  <!-- =========================================================
+       HERO — oversized editorial display
+       ========================================================= -->
+  <section class="hero">
+    <div class="hero__grid">
+      <div class="hero__kicker" data-reveal>
+        <span class="kicker__num">Nº 001</span>
+        <span class="kicker__dot" aria-hidden="true">●</span>
+        <span class="kicker__label">Мови у власному темпі</span>
+      </div>
+
+      <h1 class="hero__headline" data-reveal>
+        Говори<span class="hero__amp">&nbsp;&amp;&nbsp;</span>живи<br />
+        <em class="hero__em">мовою</em>, що
+        <span class="hero__underline">обираєш</span>.
+      </h1>
+
+      <p class="hero__lede" data-reveal>
+        StartSmart — мовна студія з Полтави. Вчимо англійської та польської
+        так, як вчили б близького друга: без муштри, з увагою до живого
+        спілкування та повагою до твого часу.
+      </p>
+
+      <div class="hero__meta" data-reveal>
+        <a href="#contact" class="btn btn--primary">
+          <span>Безкоштовний пробний урок</span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__num">5</span>
+            <span class="stat__label">Викладачів<br />рівня C1–C2</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">3</span>
+            <span class="stat__label">Формати<br />навчання</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">2</span>
+            <span class="stat__label">Мови<br />EN · PL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       MARQUEE — languages ticker
+       ========================================================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>English</span><span class="marquee__dot">✦</span>
+      <span>Polski</span><span class="marquee__dot">✦</span>
+      <span>Українська</span><span class="marquee__dot">✦</span>
+      <span>C1 · C2</span><span class="marquee__dot">✦</span>
+      <span>Live</span><span class="marquee__dot">✦</span>
+      <span>Online</span><span class="marquee__dot">✦</span>
+      <span>English</span><span class="marquee__dot">✦</span>
+      <span>Polski</span><span class="marquee__dot">✦</span>
+      <span>Українська</span><span class="marquee__dot">✦</span>
+      <span>C1 · C2</span><span class="marquee__dot">✦</span>
+      <span>Live</span><span class="marquee__dot">✦</span>
+      <span>Online</span><span class="marquee__dot">✦</span>
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       MANIFESTO — pulled from english_school "about"
+       ========================================================= -->
+  <section id="manifesto" class="section section--manifesto">
+    <div class="section__head" data-reveal>
+      <span class="section__num">Nº 02</span>
+      <span class="section__kicker">Манiфест</span>
+    </div>
+    <div class="manifesto__grid">
+      <h2 class="section__title" data-reveal>
+        Не курс. <em>Щоденна практика</em> — з тими, хто вже живе мовою.
+      </h2>
+      <div class="manifesto__body" data-reveal>
+        {english.about?.paragraphs.slice(0, 2).map((p) => <p>{p}</p>)}
+      </div>
+      <ul class="manifesto__features" data-reveal>
+        {english.features?.items.slice(0, 5).map((f, i) => (
+          <li>
+            <span class="feature__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="feature__text">{f.title}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       PULL QUOTE — editorial callout
+       ========================================================= -->
+  {pullQuote && (
+    <section class="pullquote" data-reveal>
+      <span class="pullquote__mark" aria-hidden="true">“</span>
+      <blockquote>
+        <p>{pullQuote}</p>
+        <cite>— {pullQuoteAuthor}, засновниця</cite>
+      </blockquote>
+    </section>
+  )}
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       FORMATS — editorial features
+       ========================================================= -->
+  <section id="formats" class="section section--formats">
+    <div class="section__head" data-reveal>
+      <span class="section__num">Nº 03</span>
+      <span class="section__kicker">Формати навчання</span>
+    </div>
+    <h2 class="section__title" data-reveal>
+      Три способи <em>зустрітися</em> з мовою.
+    </h2>
+
+    <div class="formats">
+      {formats.map((fmt, i) => {
+        const d = fmt.data;
+        return (
+          <article class="format" data-reveal>
+            <div class="format__num">{String(i + 1).padStart(2, '0')}</div>
+            <div class="format__body">
+              <h3 class="format__title">{d.title}</h3>
+              <p class="format__subtitle">{d.subtitle}</p>
+              <div class="format__meta">
+                <span class="format__price">{d.priceFrom}</span>
+                <a href="#contact" class="format__cta">
+                  Записатися <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    {formats[0] && (
+      <p class="section__note">{formats[0].data.ratesNote}</p>
+    )}
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       TEACHERS — editorial portraits
+       ========================================================= -->
+  <section id="teachers" class="section section--teachers">
+    <div class="section__head" data-reveal>
+      <span class="section__num">Nº 04</span>
+      <span class="section__kicker">Склад редакції</span>
+    </div>
+    <h2 class="section__title" data-reveal>
+      Твої <em>викладачі</em>.
+    </h2>
+
+    <div class="teachers">
+      {teachers.map((t) => {
+        const d = t.data;
+        const langs = d.languages.map((l) => languageLabels[l]).filter(Boolean);
+        return (
+          <article class="teacher" data-reveal>
+            <div class="teacher__portrait">
+              <img src={url(d.photo.src)} alt={d.photo.alt || d.name} loading="lazy" />
+              <div class="teacher__langs">
+                {langs.map((l) => <span>{l}</span>)}
+              </div>
+            </div>
+            <h3 class="teacher__name">{d.name}</h3>
+            <p class="teacher__info">{d.info}</p>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       FAQ — large-type accordion
+       ========================================================= -->
+  <section id="questions" class="section section--faq">
+    <div class="section__head" data-reveal>
+      <span class="section__num">Nº 05</span>
+      <span class="section__kicker">Питання</span>
+    </div>
+    <h2 class="section__title" data-reveal>
+      Що варто <em>знати</em> перед початком.
+    </h2>
+
+    <div class="faq" data-accordion>
+      {english.faq.map((item, i) => (
+        <div class="faq__item" data-accordion-item>
+          <button class="faq__trigger" data-accordion-trigger type="button">
+            <span class="faq__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="faq__q">{item.question}</span>
+            <span class="faq__toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer">
+            <p>{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- =========================================================
+       CONTACT
+       ========================================================= -->
+  <section id="contact" class="section section--contact">
+    <div class="section__head" data-reveal>
+      <span class="section__num">Nº 06</span>
+      <span class="section__kicker">Зв'язок</span>
+    </div>
+
+    <div class="contact" data-reveal>
+      <h2 class="contact__title">
+        Напиши — <em>відповімо</em> того ж дня.
+      </h2>
+      <p class="contact__text">{english.contact?.text}</p>
+
+      <div class="contact__channels">
+        <a class="channel" href={`mailto:${settings.email}`}>
+          <span class="channel__label">Email</span>
+          <span class="channel__value">{settings.email}</span>
+          <span class="channel__arrow" aria-hidden="true">→</span>
+        </a>
+        {settings.socials.telegram && (
+          <a class="channel" href={settings.socials.telegram} target="_blank" rel="noopener">
+            <span class="channel__label">Telegram</span>
+            <span class="channel__value">@startsmart_world</span>
+            <span class="channel__arrow" aria-hidden="true">→</span>
+          </a>
+        )}
+        {settings.socials.instagram && (
+          <a class="channel" href={settings.socials.instagram} target="_blank" rel="noopener">
+            <span class="channel__label">Instagram</span>
+            <span class="channel__value">@startsmart_world</span>
+            <span class="channel__arrow" aria-hidden="true">→</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule rule--double" />
+
+  <!-- =========================================================
+       COLOPHON / footer
+       ========================================================= -->
+  <footer class="colophon">
+    <div class="colophon__row">
+      <div class="colophon__brand">
+        <span class="colophon__brand-main">StartSmart</span>
+        <span class="colophon__brand-sub">— Мовна студія · Полтава / Online</span>
+      </div>
+      <div class="colophon__set-in">
+        Set in <em>Fraunces</em> &amp; <em>Geist</em>
+      </div>
+    </div>
+    <div class="colophon__row colophon__row--fine">
+      <span>{settings.footerCopy}</span>
+      <span>{issueNumber} / {year}</span>
+    </div>
+  </footer>
+</V2Layout>
+
+<style>
+  /* ============================================================
+     Layout container
+     ============================================================ */
+  .masthead,
+  .hero,
+  .section,
+  .pullquote,
+  .colophon {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  @media (min-width: 768px) {
+    .masthead, .hero, .section, .pullquote, .colophon {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  @media (min-width: 1080px) {
+    .masthead, .hero, .section, .pullquote, .colophon {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+  }
+
+  .rule {
+    max-width: 1240px;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    height: 0;
+  }
+  .rule--double {
+    border-top: 1px solid var(--rule-strong);
+    position: relative;
+  }
+  .rule--double::after {
+    content: "";
+    display: block;
+    border-top: 1px solid var(--rule-strong);
+    margin-top: 3px;
+  }
+
+  /* ============================================================
+     Masthead
+     ============================================================ */
+  .masthead {
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+  .masthead__bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead__spacer { flex: 1; }
+  .masthead__sep { opacity: 0.5; }
+  .masthead__theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .masthead__theme:hover { border-color: var(--rule-strong); background: var(--paper-2); }
+  .theme-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--paper);
+  }
+
+  .masthead__title-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0 20px;
+    flex-wrap: wrap;
+  }
+  .masthead__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 30;
+    font-size: clamp(32px, 7vw, 54px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .masthead__title-sub {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+    font-size: 0.5em;
+    margin-left: 0.15em;
+    white-space: nowrap;
+  }
+  .masthead__nav {
+    display: none;
+    gap: 26px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding-bottom: 8px;
+  }
+  @media (min-width: 880px) {
+    .masthead__nav { display: inline-flex; }
+  }
+  .masthead__nav a {
+    position: relative;
+    transition: color 0.2s;
+  }
+  .masthead__nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .masthead__nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .masthead__nav-cta {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ============================================================
+     Hero
+     ============================================================ */
+  .hero {
+    padding-top: clamp(32px, 6vw, 72px);
+    padding-bottom: clamp(48px, 8vw, 120px);
+  }
+  .hero__grid {
+    display: grid;
+    gap: 28px;
+  }
+  .hero__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .kicker__num { color: var(--accent); font-weight: 600; }
+  .kicker__dot { color: var(--accent); font-size: 8px; }
+
+  .hero__headline {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-variation-settings: "SOFT" 50, "opsz" 144;
+    font-size: clamp(52px, 11.5vw, 168px);
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin: 0;
+    max-width: 14ch;
+  }
+  .hero__em {
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 80, "opsz" 144;
+    color: var(--accent);
+    display: inline-block;
+  }
+  .hero__amp {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+    font-size: 0.6em;
+    vertical-align: 0.12em;
+  }
+  .hero__underline {
+    position: relative;
+    white-space: nowrap;
+  }
+  .hero__underline::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.08em;
+    height: 0.08em;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underline-draw 1.2s 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  @keyframes underline-draw {
+    to { transform: scaleX(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__underline::after { transform: scaleX(1); animation: none; }
+  }
+
+  .hero__lede {
+    font-family: var(--font-body);
+    font-size: clamp(15px, 1.6vw, 19px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 48ch;
+    margin: 12px 0 0;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 12px;
+  }
+  @media (min-width: 768px) {
+    .hero__meta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 26px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform 0.25s, background 0.25s, color 0.25s;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn--primary:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+  .btn__arrow {
+    font-size: 1.2em;
+    transition: transform 0.25s;
+  }
+  .btn:hover .btn__arrow { transform: translateX(4px); }
+
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    max-width: 440px;
+  }
+  .stat__num {
+    display: block;
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 40, "opsz" 144;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 54px);
+    line-height: 1;
+    color: var(--accent);
+  }
+  .stat__label {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+  }
+
+  /* ============================================================
+     Marquee
+     ============================================================ */
+  .marquee {
+    overflow: hidden;
+    padding: 22px 0;
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 40;
+    font-weight: 300;
+    font-size: clamp(34px, 6vw, 64px);
+    line-height: 1;
+    color: var(--ink);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee__track {
+    display: inline-flex;
+    gap: 32px;
+    white-space: nowrap;
+    animation: marquee 42s linear infinite;
+  }
+  .marquee__dot {
+    color: var(--accent);
+    font-style: normal;
+    font-size: 0.6em;
+    align-self: center;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; }
+  }
+
+  /* ============================================================
+     Section primitives
+     ============================================================ */
+  .section {
+    padding-top: clamp(56px, 8vw, 112px);
+    padding-bottom: clamp(56px, 8vw, 112px);
+  }
+  .section__head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 28px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .section__num {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .section__title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-variation-settings: "SOFT" 30, "opsz" 144;
+    font-size: clamp(36px, 6vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+    max-width: 20ch;
+  }
+  .section__title em {
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 80, "opsz" 144;
+    color: var(--accent);
+  }
+  .section__note {
+    margin-top: 32px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     Manifesto
+     ============================================================ */
+  .manifesto__grid {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 960px) {
+    .manifesto__grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .section--manifesto .section__title { grid-column: 1 / 2; }
+    .manifesto__body { grid-column: 1 / 2; }
+    .manifesto__features { grid-column: 2 / 3; grid-row: 1 / span 2; }
+  }
+  .manifesto__body p {
+    font-size: clamp(16px, 1.3vw, 19px);
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+    max-width: 58ch;
+  }
+  .manifesto__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .manifesto__features li {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .manifesto__features li:first-child { border-top: 1px solid var(--rule); }
+  .feature__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .feature__text {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 50;
+    font-size: clamp(18px, 1.8vw, 24px);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  /* ============================================================
+     Pull quote
+     ============================================================ */
+  .pullquote {
+    padding-top: clamp(56px, 8vw, 112px);
+    padding-bottom: clamp(56px, 8vw, 112px);
+    text-align: center;
+    position: relative;
+  }
+  .pullquote__mark {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(100px, 16vw, 220px);
+    line-height: 0.6;
+    color: var(--accent);
+    opacity: 0.35;
+    margin-bottom: -0.2em;
+  }
+  .pullquote blockquote {
+    margin: 0 auto;
+    max-width: 22ch;
+  }
+  .pullquote blockquote p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: "SOFT" 70, "opsz" 144;
+    font-size: clamp(28px, 4.5vw, 56px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+    color: var(--ink);
+  }
+  .pullquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ============================================================
+     Formats
+     ============================================================ */
+  .formats {
+    margin-top: 20px;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .format {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: background 0.3s;
+  }
+  @media (min-width: 768px) {
+    .format {
+      grid-template-columns: 120px 1fr;
+      gap: 40px;
+      padding: 44px 0;
+    }
+  }
+  .format__num {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 40, "opsz" 144;
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.85;
+    color: var(--accent);
+  }
+  .format__body {
+    display: grid;
+    gap: 14px;
+  }
+  .format__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 40;
+    font-size: clamp(24px, 3.6vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .format__subtitle {
+    font-size: clamp(14px, 1.3vw, 17px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 52ch;
+  }
+  .format__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding-top: 10px;
+    margin-top: 6px;
+    border-top: 1px dashed var(--rule);
+  }
+  .format__price {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .format__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .format__cta span { transition: transform 0.25s; }
+  .format__cta:hover { border-bottom-color: var(--accent); }
+  .format__cta:hover span { transform: translateX(4px); }
+
+  /* ============================================================
+     Teachers
+     ============================================================ */
+  .teachers {
+    margin-top: 24px;
+    display: grid;
+    gap: 48px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .teachers { grid-template-columns: repeat(2, 1fr); gap: 40px 36px; }
+  }
+  @media (min-width: 960px) {
+    .teachers { grid-template-columns: repeat(3, 1fr); gap: 56px 40px; }
+  }
+  .teacher {
+    display: flex;
+    flex-direction: column;
+  }
+  .teacher__portrait {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+  }
+  .teacher__portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.9) contrast(1.05);
+    transition: filter 0.6s, transform 1.2s;
+  }
+  .teacher:hover .teacher__portrait img {
+    filter: grayscale(0) contrast(1);
+    transform: scale(1.03);
+  }
+  :root[data-v="v2"][data-theme="dark"] .teacher__portrait img {
+    filter: grayscale(0.85) contrast(0.95) brightness(0.85);
+  }
+  :root[data-v="v2"][data-theme="dark"] .teacher:hover .teacher__portrait img {
+    filter: grayscale(0) contrast(1) brightness(0.9);
+  }
+  .teacher__langs {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: flex;
+    gap: 6px;
+  }
+  .teacher__langs span {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--rule-strong);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .teacher__name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 40;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 20px 0 10px;
+    color: var(--ink);
+  }
+  .teacher__info {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ============================================================
+     FAQ
+     ============================================================ */
+  .faq {
+    margin-top: 24px;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .faq__item {
+    border-bottom: 1px solid var(--rule);
+  }
+  .faq__trigger {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 26px 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+  }
+  .faq__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .faq__q {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 40;
+    font-size: clamp(19px, 2.2vw, 28px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .faq__toggle {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--accent);
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    min-width: 24px;
+    text-align: center;
+  }
+  .faq__item.is-open .faq__toggle { transform: rotate(45deg); }
+  .faq__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .faq__answer > p {
+    overflow: hidden;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    padding-left: calc(11px + 18px);  /* align with question text, past num column */
+  }
+  .faq__item.is-open .faq__answer {
+    grid-template-rows: 1fr;
+  }
+  .faq__item.is-open .faq__answer > p {
+    padding-bottom: 26px;
+  }
+
+  /* ============================================================
+     Contact
+     ============================================================ */
+  .contact {
+    display: grid;
+    gap: 28px;
+    max-width: 920px;
+  }
+  .contact__title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-variation-settings: "SOFT" 30, "opsz" 144;
+    font-size: clamp(36px, 6vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+    max-width: 16ch;
+  }
+  .contact__title em {
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "SOFT" 80, "opsz" 144;
+    color: var(--accent);
+  }
+  .contact__text {
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 48ch;
+    margin: 0;
+  }
+  .contact__channels {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .channel {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: padding 0.3s, color 0.3s;
+  }
+  .channel__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .channel__value {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 40;
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--ink);
+    word-break: break-all;
+  }
+  .channel__arrow {
+    font-size: 22px;
+    color: var(--accent);
+    transition: transform 0.3s;
+  }
+  .channel:hover { padding-left: 12px; }
+  .channel:hover .channel__arrow { transform: translateX(6px); }
+
+  /* ============================================================
+     Colophon
+     ============================================================ */
+  .colophon {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .colophon__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 14px 0;
+  }
+  .colophon__row--fine {
+    border-top: 1px solid var(--rule);
+    font-size: 10px;
+    color: var(--ink-faint);
+  }
+  .colophon__brand-main {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 30;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .colophon__brand-sub {
+    margin-left: 8px;
+  }
+  .colophon__set-in em {
+    font-style: italic;
+    font-family: var(--font-display);
+    text-transform: none;
+    font-size: 13px;
+    color: var(--ink);
+  }
+</style>
