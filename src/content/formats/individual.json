@@ -1,7 +1,7 @@
 {
-  "title": "ІНДИВІДУАЛий креп",
+  "title": "ІНДИВІДУАЛЬНІ ЗАНЯТТЯ",
   "shortTitle": "Індивідуально",
-  "subtitle": "Ви + викладач / урок 228 хв. нуб",
+  "subtitle": "Ви + викладач / урок 55 хв. Програма адаптується повністю під вас",
   "priceFrom": "від 300 грн / 55 хв.",
   "heroImage": {
     "src": "/images/1111.png",
@@ -21,30 +21,21 @@
       "duration": "55 хв.",
       "price": "400 грн",
       "per": "за урок",
-      "href": "",
-      "btnLabel": "",
-      "featured": false,
-      "note": ""
+      "featured": false
     },
     {
       "name": "10 УРОКІВ",
       "duration": "10 × 55 хв.",
       "price": "3600 грн",
       "per": "пакет / Світлана",
-      "href": "",
-      "btnLabel": "",
-      "featured": true,
-      "note": ""
+      "featured": true
     },
     {
       "name": "10 УРОКІВ",
       "duration": "10 × 55 хв.",
       "price": "3150 грн",
       "per": "пакет / інші викладачі",
-      "href": "",
-      "btnLabel": "",
-      "featured": false,
-      "note": ""
+      "featured": false
     }
   ],
   "faq": [

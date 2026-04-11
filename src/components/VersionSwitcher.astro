@@ -44,27 +44,37 @@ const versions = [
 
 <style>
   .version-switcher {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 90;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-left: 16px;
+    padding: 6px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
     font-size: 13px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, background-color 0.25s ease, border-color 0.25s ease;
+  }
+  .version-switcher:hover {
+    opacity: 1;
   }
   .version-switcher__label {
     color: var(--color-text-soft);
   }
   .version-switcher__select {
-    padding: 4px 8px;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    background: var(--color-surface);
+    padding: 2px 4px;
+    border: none;
+    background: transparent;
     color: var(--color-text);
     font: inherit;
     cursor: pointer;
-    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   }
   .version-switcher__select:focus {
     outline: none;
-    border-color: var(--color-pink);
   }
 </style>

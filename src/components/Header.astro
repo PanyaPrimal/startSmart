@@ -1,6 +1,5 @@
 ---
 import { getEntry } from 'astro:content';
-import VersionSwitcher from './VersionSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { url } from '../utils/url';
 const s = (await getEntry('settings', 'site'))!.data;
@@ -34,7 +33,6 @@ const s = (await getEntry('settings', 'site'))!.data;
         )}
       </div>
       <ThemeToggle />
-      <div class="header__version-wrap"><VersionSwitcher /></div>
       <button class="header__burger" id="burger" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
