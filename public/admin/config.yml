@@ -1,14 +1,12 @@
 # Sveltia CMS configuration for StartSmart
 # -----------------------------------------
-# Backend: local proxy for development. Run `npx @sveltia/cms-proxy-server`
-# from the repo root to let the admin write directly to src/content/*.
-# Swap to github / gitlab when we set up hosted auth.
+# Backend: GitHub. Editors sign in via Personal Access Token (PAT).
+# On the Sveltia sign-in screen, click "Sign in with GitHub Using Token"
+# and paste a PAT with `repo` scope (generate at https://github.com/settings/tokens/new).
 backend:
-  name: proxy
-  proxy_url: http://localhost:8081/api/v1
-  branch: redesign-astro
-
-local_backend: true
+  name: github
+  repo: PanyaPrimal/startSmart
+  branch: master
 
 media_folder: public/images
 public_folder: /images
