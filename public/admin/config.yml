@@ -59,6 +59,7 @@ collections:
           - name: nav
             label: Меню
             widget: list
+            summary: "{{label}} → {{href}}"
             fields:
               - { name: label, label: Напис, widget: string }
               - { name: href, label: Посилання, widget: string }
@@ -123,11 +124,13 @@ collections:
       - name: rates
         label: Тарифи
         widget: list
+        summary: "{{name}} — {{price}}"
         fields: *rate_fields
       - name: faq
         label: Часті питання
         widget: list
         required: false
+        summary: "{{question}}"
         fields: *faq_fields
       - { name: order, label: Порядок, widget: number, default: 0, value_type: int }
 
@@ -207,6 +210,7 @@ collections:
         label: Тарифи на сторінці
         widget: list
         required: false
+        summary: "{{name}} — {{price}}"
         fields: *rate_fields
 
       - { name: teachersTitle, label: Заголовок "Викладачі", widget: string, required: false }
@@ -221,6 +225,7 @@ collections:
         label: FAQ
         widget: list
         required: false
+        summary: "{{question}}"
         fields: *faq_fields
 
       - name: contact
