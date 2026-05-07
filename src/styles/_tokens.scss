@@ -20,7 +20,7 @@
   --color-bg-soft:          #fdf6f6;
   --color-bg-teal-soft:     #e2f1ed;
   --color-surface:          #ffffff;
-  --color-surface-raised:   #ffffff;
+
 
   // Borders
   --color-border:           rgba(0, 0, 0, 0.08);
@@ -41,9 +41,6 @@
   // On-brand text (text color on pink/teal filled buttons)
   --color-on-brand:         #ffffff;
 
-  // Constants (do not change between themes)
-  --color-white:            #ffffff;
-  --color-black:            #000000;
 }
 
 [data-theme="dark"] {
@@ -63,8 +60,6 @@
   --color-bg-soft:          #181b22;
   --color-bg-teal-soft:     #162421;
   --color-surface:          #1c2029;
-  --color-surface-raised:   #232834;
-
   // Borders
   --color-border:           rgba(255, 255, 255, 0.08);
   --color-border-pink:      rgba(233, 138, 160, 0.35);
@@ -91,8 +86,7 @@
 [data-theme="dark"] .about__image img,
 [data-theme="dark"] .method-card__icon,
 [data-theme="dark"] .teacher-card__photo,
-[data-theme="dark"] .contact__channel img,
-[data-theme="dark"] .social-promo__card img {
+[data-theme="dark"] .contact__channel img {
   filter: brightness(0.85) contrast(1.05);
 }
 

@@ -32,15 +32,16 @@
   "methods": ["individual", "pair", "group"],
   "ratesTitle": "ЦІНИ НА КУРСИ",
   "rates": [
-    { "name": "ПАРНІ ЗАНЯТТЯ", "duration": "урок 60 хв.", "price": "від 190 грн", "per": "за урок / з людини", "href": "/pair_classes", "btnLabel": "Детальніше", "featured": false },
-    { "name": "ІНДИВІДУАЛЬНІ ЗАНЯТТЯ", "duration": "урок 55 хв.", "price": "від 300 грн", "per": "за урок", "href": "/individual_classes", "btnLabel": "Детальніше", "featured": true },
-    { "name": "ГРУПОВІ ЗАНЯТТЯ", "duration": "урок 80 хв.", "price": "від 150 грн", "per": "за урок / з людини", "href": "/group_classes", "btnLabel": "Детальніше", "featured": false }
+    { "name": "ПАРНІ ЗАНЯТТЯ", "duration": "урок 60 хв.", "price": "від 350 грн", "per": "за урок / з людини", "href": "/pair_classes", "btnLabel": "Детальніше", "featured": false },
+    { "name": "ІНДИВІДУАЛЬНІ ЗАНЯТТЯ", "duration": "урок 55 хв.", "price": "від 450 грн", "per": "за урок", "href": "/individual_classes", "btnLabel": "Детальніше", "featured": true },
+    { "name": "ГРУПОВІ ЗАНЯТТЯ", "duration": "урок 80 хв.", "price": "від 250 грн", "per": "за урок / з людини", "href": "/group_classes", "btnLabel": "Детальніше", "featured": false }
   ],
   "teachersTitle": "ВИКЛАДАЧІ",
   "teachers": ["anastasia", "valeria", "diana", "evgenia", "svitlana"],
   "faqTitle": "ЧАСТІ ПИТАННЯ",
   "faq": [
-    { "question": "Чи можна повернути оплату?", "answer": "Так, ви можете повернути оплату за невикористані заняття. Зв'яжіться з нами через email або Telegram." },
+    { "question": "Чи можна повернути оплату?", "answer": "Ні, оплата не повертається. Але Ви можете передати свої заняття обраній вами людині." },
+    { "question": "Що відбувається при відміні заняття?", "answer": "При відміні заняття пізніше ніж за 2 години до початку знімається 50% оплати." },
     { "question": "Як проходять заняття?", "answer": "Заняття проходять онлайн через Zoom, Skype або Teams. Після реєстрації ми надішлемо посилання на урок." },
     { "question": "Як записатися на пробний урок?", "answer": "Заповніть форму нижче або напишіть нам у Telegram чи Instagram. Перший урок — безкоштовне тестування рівня." }
   ],
