@@ -94,6 +94,7 @@ const pages = defineCollection({
         title: z.string(),
         subtitle: z.string().optional(),
         image: image.optional(),
+        imageMode: z.enum(["cover", "graphic"]).default("cover"),
         overlay: z.enum(["pink", "teal", "dark"]).default("pink"),
         ctaLabel: z.string().optional(),
         ctaHref: z.string().optional(),

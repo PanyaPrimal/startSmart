@@ -3,7 +3,8 @@
   "hero": {
     "title": "English School",
     "subtitle": "Мовна студія StartSmart запрошує на цікаві заняття з польської та англійської мов",
-    "image": { "src": "/images/Hat.jpg", "alt": "English School" },
+    "image": { "src": "/images/english-hero-cap.svg", "alt": "English School" },
+    "imageMode": "graphic",
     "overlay": "dark",
     "ctaLabel": "Починай смартово",
     "ctaHref": "#about"
