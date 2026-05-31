@@ -16,7 +16,20 @@ const getInfoLines = (info: string) => info.split('·').map((part) => part.trim(
     <div class="teachers__grid">
       {entries.map((t) => (
         <div class="teacher-card">
-          <img class="teacher-card__photo" src={url(t.data.photo.src)} alt={t.data.photo.alt || t.data.name} />
+          <div class="teacher-card__photo-frame">
+            <img
+              class="teacher-card__photo"
+              src={url(t.data.photo.src)}
+              alt={t.data.photo.alt || t.data.name}
+              style={[
+                t.data.photoScale ? `--teacher-photo-scale:${t.data.photoScale};` : undefined,
+                t.data.photoOffsetX ? `--teacher-photo-offset-x:${t.data.photoOffsetX}px;` : undefined,
+                t.data.photoOffsetY ? `--teacher-photo-offset-y:${t.data.photoOffsetY}px;` : undefined,
+              ]
+                .filter(Boolean)
+                .join(" ") || undefined}
+            />
+          </div>
           <h3 class="teacher-card__name">{t.data.name}</h3>
           {t.data.quote && <p class="teacher-card__quote">{t.data.quote}</p>}
           <p class="teacher-card__info">

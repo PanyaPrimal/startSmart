@@ -1,6 +1,9 @@
 {
   "name": "СВІТЛАНА",
-  "photo": { "src": "/images/svitlana-portrait.png", "alt": "Світлана" },
+  "photo": { "src": "/images/Svetlana2.png", "alt": "Світлана" },
+  "photoScale": 1.25,
+  "photoOffsetX": -3,
+  "photoOffsetY": -10,
   "quote": "\"ДОПОМОЖУ ВИВЧИТИ МОВУ У НАЙПРОСТІШИЙ ДЛЯ ВАС СПОСІБ.\"",
   "info": "Засновниця онлайн-школи StartSmart · Бізнес-коуч · Викладач англійської та польської мов · Має підтверджений рівень С1",
   "languages": ["english", "polish", "ukrainian", "russian"],

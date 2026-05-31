@@ -45,7 +45,7 @@ const formAction = s.formAction || '#';
           )}
           {showEmail && (
             <a href={`mailto:${s.email}`} class="contact__channel">
-              <span>📧</span>
+              <img src={url('/images/email.svg')} alt="Email" />
               <span>{s.email}</span>
             </a>
           )}

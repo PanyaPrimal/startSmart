@@ -52,6 +52,9 @@ const teachers = defineCollection({
   schema: z.object({
     name: z.string(),
     photo: image,
+    photoScale: z.number().optional(),
+    photoOffsetX: z.number().optional(),
+    photoOffsetY: z.number().optional(),
     quote: z.string().optional(),
     info: z.string(),
     languages: z

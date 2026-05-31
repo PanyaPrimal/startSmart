@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="StartSmart favicon owl">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff4f7"/>
+      <stop offset="100%" stop-color="#ffe7ef"/>
+    </linearGradient>
+    <linearGradient id="owl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e17088"/>
+      <stop offset="100%" stop-color="#65b9a8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M20 25.5 28.5 17l3.5 7.5L35.5 17l8.5 8.5V40c0 6.08-4.92 11-11 11h-2c-6.08 0-11-4.92-11-11V25.5Z" fill="url(#owl)"/>
+  <circle cx="27.5" cy="31.5" r="7" fill="#fff7fa"/>
+  <circle cx="36.5" cy="31.5" r="7" fill="#f6fffd"/>
+  <circle cx="27.5" cy="31.5" r="3.2" fill="#2d2732"/>
+  <circle cx="36.5" cy="31.5" r="3.2" fill="#2d2732"/>
+  <path d="M32 35.5 27.8 39h8.4L32 35.5Z" fill="#f3b261"/>
+  <path d="M25.5 43c1.77 2.03 4.02 3 6.5 3s4.73-.97 6.5-3" fill="none" stroke="#fff7fa" stroke-linecap="round" stroke-width="2.6"/>
+</svg>
