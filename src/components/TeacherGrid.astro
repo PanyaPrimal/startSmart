@@ -8,6 +8,7 @@ interface Props {
 }
 const { title = 'ВИКЛАДАЧІ', teachers, id = 'teachers' } = Astro.props;
 const entries = await getEntries(teachers);
+const getInfoLines = (info: string) => info.split('·').map((part) => part.trim()).filter(Boolean);
 ---
 <section class="section teachers" id={id}>
   <div class="container">
@@ -18,7 +19,14 @@ const entries = await getEntries(teachers);
           <img class="teacher-card__photo" src={url(t.data.photo.src)} alt={t.data.photo.alt || t.data.name} />
           <h3 class="teacher-card__name">{t.data.name}</h3>
           {t.data.quote && <p class="teacher-card__quote">{t.data.quote}</p>}
-          <p class="teacher-card__info">{t.data.info}</p>
+          <p class="teacher-card__info">
+            {getInfoLines(t.data.info).map((line, index) => (
+              <>
+                {index > 0 && <br />}
+                {line}
+              </>
+            ))}
+          </p>
         </div>
       ))}
     </div>

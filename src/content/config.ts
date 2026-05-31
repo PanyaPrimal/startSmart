@@ -1,10 +1,10 @@
-import { defineCollection, z, reference } from 'astro:content';
+import { defineCollection, z, reference } from "astro:content";
 
 // Shared image field: path to a public/ image, with optional dark-mode alternate.
 const image = z.object({
   src: z.string(),
   srcDark: z.string().optional(),
-  alt: z.string().default(''),
+  alt: z.string().default(""),
 });
 
 const rate = z.object({
@@ -12,8 +12,8 @@ const rate = z.object({
   duration: z.string().optional(),
   price: z.string(),
   per: z.string().optional(),
-  href: z.string().default('#contact'),
-  btnLabel: z.string().default('Записатися'),
+  href: z.string().default("#contact"),
+  btnLabel: z.string().default("Записатися"),
   featured: z.boolean().default(false),
   note: z.string().optional(),
 });
@@ -30,11 +30,12 @@ const navLink = z.object({
 
 // ---------- settings (singleton JSON) ----------
 const settings = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     siteName: z.string(),
     tagline: z.string().optional(),
     email: z.string(),
+    formAction: z.string().optional(),
     socials: z.object({
       facebook: z.string().optional(),
       telegram: z.string().optional(),
@@ -47,27 +48,29 @@ const settings = defineCollection({
 
 // ---------- teachers ----------
 const teachers = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     name: z.string(),
     photo: image,
     quote: z.string().optional(),
     info: z.string(),
-    languages: z.array(z.enum(['english', 'polish', 'ukrainian', 'russian'])).default([]),
+    languages: z
+      .array(z.enum(["english", "polish", "ukrainian", "russian"]))
+      .default([]),
     order: z.number().default(0),
   }),
 });
 
 // ---------- learning formats (group / pair / individual) ----------
 const formats = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     title: z.string(),
     shortTitle: z.string(),
     subtitle: z.string(),
     priceFrom: z.string(),
     heroImage: image,
-    heroOverlay: z.enum(['pink', 'teal', 'dark']).default('pink'),
+    heroOverlay: z.enum(["pink", "teal", "dark"]).default("pink"),
     cardIcon: image.optional(),
     cardDescription: z.string().optional(),
     href: z.string(),
@@ -80,7 +83,7 @@ const formats = defineCollection({
 
 // ---------- top-level pages (home, english_school, polish) ----------
 const pages = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     title: z.string(),
     hero: z
@@ -88,7 +91,7 @@ const pages = defineCollection({
         title: z.string(),
         subtitle: z.string().optional(),
         image: image.optional(),
-        overlay: z.enum(['pink', 'teal', 'dark']).default('pink'),
+        overlay: z.enum(["pink", "teal", "dark"]).default("pink"),
         ctaLabel: z.string().optional(),
         ctaHref: z.string().optional(),
       })
@@ -105,15 +108,39 @@ const pages = defineCollection({
     features: z
       .object({
         title: z.string(),
-        items: z.array(z.object({ icon: z.string(), title: z.string() })),
+        subtitle: z.string().optional(),
+        items: z
+          .array(z.object({ icon: z.string(), title: z.string() }))
+          .default([]),
+        courses: z
+          .array(
+            z.object({
+              emoji: z.string(),
+              title: z.string(),
+              image: image,
+              description: z.string(),
+              topics: z.array(z.string()).default([]),
+              note: z.string().optional(),
+              stats: z
+                .array(
+                  z.object({
+                    value: z.string(),
+                    label: z.string(),
+                  }),
+                )
+                .default([]),
+              footer: z.array(z.string()).default([]),
+            }),
+          )
+          .default([]),
       })
       .optional(),
     methodsTitle: z.string().optional(),
-    methods: z.array(reference('formats')).default([]),
+    methods: z.array(reference("formats")).default([]),
     ratesTitle: z.string().optional(),
     rates: z.array(rate).default([]),
     teachersTitle: z.string().optional(),
-    teachers: z.array(reference('teachers')).default([]),
+    teachers: z.array(reference("teachers")).default([]),
     faqTitle: z.string().optional(),
     faq: z.array(faqItem).default([]),
     contact: z
@@ -130,9 +157,9 @@ const pages = defineCollection({
           z.object({
             label: z.string(),
             href: z.string(),
-            color: z.enum(['pink', 'teal']),
+            color: z.enum(["pink", "teal"]),
             external: z.boolean().default(false),
-          })
+          }),
         ),
       })
       .optional(),

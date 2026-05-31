@@ -22,6 +22,7 @@ const {
 
 const site = await getEntry('settings', 'site');
 const s = site!.data;
+const formAction = s.formAction || '#';
 ---
 <section class="section contact" id={id}>
   <div class="container">
@@ -50,23 +51,139 @@ const s = site!.data;
           )}
         </div>
       </div>
-      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="post">
+      <form class="form" action={formAction} method="post" accept-charset="UTF-8" data-formspree-form>
+        <input type="hidden" name="_subject" value={`${s.siteName}: ${formTitle}`} />
         <h3 class="form__title">{formTitle}</h3>
-        <div class="form__group">
-          <label class="form__label" for={`${formIdPrefix}-name`}>Ваше ім'я</label>
-          <input class="form__input" type="text" id={`${formIdPrefix}-name`} name="name" placeholder="Ім'я" required />
+        <div data-form-fields>
+          <div class="form__group">
+            <label class="form__label" for={`${formIdPrefix}-name`}>Ваше ім'я</label>
+            <input class="form__input" type="text" id={`${formIdPrefix}-name`} name="name" placeholder="Ім'я" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for={`${formIdPrefix}-phone`}>Телефон або Telegram</label>
+            <input class="form__input" type="text" id={`${formIdPrefix}-phone`} name="phone" placeholder="+380..." data-contact-handle autocomplete="tel" />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for={`${formIdPrefix}-msg`}>Коментар</label>
+            <textarea class="form__textarea" id={`${formIdPrefix}-msg`} name="message" placeholder="Рівень, мета, зручний час..."></textarea>
+          </div>
+          <button class="form__btn" type="submit">Надіслати</button>
+          <p class="form__note">Натискаючи кнопку, ви даєте згоду на обробку персональних даних</p>
         </div>
-        <div class="form__group">
-          <label class="form__label" for={`${formIdPrefix}-phone`}>Телефон або Telegram</label>
-          <input class="form__input" type="text" id={`${formIdPrefix}-phone`} name="phone" placeholder="+380..." />
+        <div class="form__success" data-form-success hidden>
+          <p class="form__success-title">Дякуємо! Заявку успішно надіслано.</p>
+          <p class="form__success-text">Ми отримали ваше повідомлення і зв'яжемося з вами найближчим часом.</p>
         </div>
-        <div class="form__group">
-          <label class="form__label" for={`${formIdPrefix}-msg`}>Коментар</label>
-          <textarea class="form__textarea" id={`${formIdPrefix}-msg`} name="message" placeholder="Рівень, мета, зручний час..."></textarea>
-        </div>
-        <button class="form__btn" type="submit">Надіслати</button>
-        <p class="form__note">Натискаючи кнопку, ви даєте згоду на обробку персональних даних</p>
+        <p class="form__note" data-form-status hidden aria-live="polite"></p>
       </form>
     </div>
   </div>
 </section>
+<script is:inline>
+  const normalizeContactHandle = (input) => {
+    const value = input.value;
+    const trimmedValue = value.trimStart();
+
+    if (!trimmedValue) {
+      input.setCustomValidity('');
+      return;
+    }
+
+    const firstChar = trimmedValue[0];
+    const isPhoneMode = firstChar === '+' || /\d/.test(firstChar);
+
+    if (!isPhoneMode) {
+      input.setCustomValidity('');
+      return;
+    }
+
+    const hasLeadingPlus = firstChar === '+';
+    const digitsOnly = value.replace(/\D/g, '');
+    const normalizedValue = hasLeadingPlus ? (digitsOnly ? `+${digitsOnly}` : '+') : digitsOnly;
+
+    if (value !== normalizedValue) {
+      input.value = normalizedValue;
+      try {
+        input.setSelectionRange(normalizedValue.length, normalizedValue.length);
+      } catch {}
+    }
+
+    input.setCustomValidity(normalizedValue === '+' ? 'Вкажіть номер телефона цифрами.' : '');
+  };
+
+  document.querySelectorAll('[data-contact-handle]').forEach((input) => {
+    normalizeContactHandle(input);
+    input.addEventListener('input', () => normalizeContactHandle(input));
+    input.addEventListener('blur', () => normalizeContactHandle(input));
+  });
+
+  document.querySelectorAll('[data-formspree-form]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      if (!form.action || form.action.endsWith('#')) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const submitButton = form.querySelector('[type="submit"]');
+      const status = form.querySelector('[data-form-status]');
+      const fields = form.querySelector('[data-form-fields]');
+      const success = form.querySelector('[data-form-success]');
+      const originalButtonText = submitButton?.textContent || '';
+      let isSubmitted = false;
+
+      if (status) {
+        status.hidden = true;
+        status.textContent = '';
+      }
+
+      if (success) {
+        success.hidden = true;
+      }
+
+      submitButton?.setAttribute('disabled', 'disabled');
+      if (submitButton) {
+        submitButton.textContent = 'Надсилаємо...';
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Form submission failed');
+        }
+
+        form.reset();
+        form.querySelectorAll('[data-contact-handle]').forEach((input) => normalizeContactHandle(input));
+
+        if (fields) {
+          fields.hidden = true;
+        }
+
+        if (success) {
+          success.hidden = false;
+        }
+
+        isSubmitted = true;
+      } catch {
+        if (status) {
+          status.textContent = 'Не вдалося надіслати форму. Спробуйте ще раз.';
+          status.hidden = false;
+        }
+      } finally {
+        if (!isSubmitted) {
+          submitButton?.removeAttribute('disabled');
+          if (submitButton) {
+            submitButton.textContent = originalButtonText;
+          }
+        }
+      }
+    });
+  });
+</script>

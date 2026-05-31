@@ -45,15 +45,68 @@ const page = (await getEntry('pages', 'english_school'))!.data;
   {page.features && (
     <section class="section section--pink-bg features" id="features">
       <div class="container">
-        <h2 class="features__title">{page.features.title}</h2>
-        <div class="features__grid">
-          {page.features.items.map((f) => (
-            <div class="feature-card">
-              <div class="feature-card__icon">{f.icon}</div>
-              <p class="feature-card__title">{f.title}</p>
-            </div>
-          ))}
+        <div class="features__header">
+          <h2 class="features__title">{page.features.title}</h2>
+          {page.features.subtitle && <p class="features__intro">{page.features.subtitle}</p>}
         </div>
+        {page.features.courses && page.features.courses.length > 0 ? (
+          <div class="course-grid">
+            {page.features.courses.map((course, index) => (
+              <article
+                class={`course-card ${index % 2 === 0 ? 'course-card--social' : 'course-card--travel'}`}
+                data-course-card
+                tabindex="0"
+              >
+                <div class="course-card__media">
+                  <img src={url(course.image.src)} alt={course.image.alt || course.title} />
+                  <div class="course-card__overlay">
+                    <p class="course-card__overlay-description">{course.description}</p>
+                    <ul class="course-card__topics">
+                      {course.topics.map((topic) => (
+                        <li class="course-card__topic">{topic}</li>
+                      ))}
+                    </ul>
+
+                    {course.note && <p class="course-card__note">{course.note}</p>}
+
+                    <div class="course-card__stats">
+                      {course.stats.map((stat) => (
+                        <div class="course-card__stat">
+                          <span class="course-card__stat-value">{stat.value}</span>
+                          <span class="course-card__stat-label">{stat.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div class="course-card__footer">
+                      {course.footer.map((item) => (
+                        <p class="course-card__footer-item">{item}</p>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="course-card__badge">{course.emoji}</div>
+                </div>
+                <div class="course-card__body">
+                  <div class="course-card__head">
+                    <h3 class="course-card__title">
+                      {course.title}
+                      <span class="course-card__title-emoji" aria-hidden="true">{course.emoji}</span>
+                    </h3>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="features__grid">
+            {page.features.items.map((f) => (
+              <div class="feature-card">
+                <div class="feature-card__icon">{f.icon}</div>
+                <p class="feature-card__title">{f.title}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )}
@@ -80,4 +133,40 @@ const page = (await getEntry('pages', 'english_school'))!.data;
       id="contacts"
     />
   )}
+
+  <script is:inline>
+    (() => {
+      const cards = Array.from(document.querySelectorAll('[data-course-card]'));
+      if (!cards.length) return;
+
+      const clearPinned = () => {
+        cards.forEach((card) => card.classList.remove('is-pinned'));
+      };
+
+      cards.forEach((card) => {
+        card.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const shouldPin = !card.classList.contains('is-pinned');
+          clearPinned();
+          if (shouldPin) card.classList.add('is-pinned');
+        });
+
+        card.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          const shouldPin = !card.classList.contains('is-pinned');
+          clearPinned();
+          if (shouldPin) card.classList.add('is-pinned');
+        });
+      });
+
+      document.addEventListener('click', () => {
+        clearPinned();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') clearPinned();
+      });
+    })();
+  </script>
 </BaseLayout>

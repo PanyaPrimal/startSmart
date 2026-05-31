@@ -19,31 +19,119 @@
     "image": { "src": "/images/berdPink.png", "alt": "StartSmart школа" }
   },
   "features": {
-    "title": "ПІСЛЯ КУРСІВ ВИ ЗМОЖЕТЕ",
+    "title": "НАШІ КУРСИ",
     "items": [
-      { "icon": "💬", "title": "Впевнено спілкуватися з носіями та іноземцями" },
-      { "icon": "🎬", "title": "Дивитися серіали англійською" },
-      { "icon": "✈️", "title": "Вільно подорожувати" },
-      { "icon": "📰", "title": "Читати статті в оригіналі" },
-      { "icon": "💼", "title": "Отримати нову роботу" }
+      { "icon": "🌍", "title": "Social English" },
+      { "icon": "✈️", "title": "Travel English" }
+    ],
+    "courses": [
+      {
+        "emoji": "🌍",
+        "title": "Social English",
+        "image": {
+          "src": "/images/social-english.jpg",
+          "alt": "Social English course collage"
+        },
+        "description": "На курсі будемо вивчати англійську для реальних життєвих ситуацій та багато говорити.",
+        "topics": [
+          "У магазині",
+          "У булочній",
+          "У кафе та ресторані",
+          "У лікарні",
+          "У салоні",
+          "У подорожах",
+          "Small talk та everyday communication",
+          "та багато інших корисних тем"
+        ],
+        "note": "А ще — будемо відслідковувати свій прогрес, вести словник та виконувати практичні завдання.",
+        "stats": [
+          { "value": "84 topics / 42 lessons", "label": "Програма" },
+          { "value": "2 рази на тиждень", "label": "Графік" },
+          { "value": "4 місяці", "label": "Тривалість" }
+        ],
+        "footer": [
+          "Міні-групи 3–5 людей",
+          "Також можливі індивідуальні заняття"
+        ]
+      },
+      {
+        "emoji": "✈️",
+        "title": "Travel English",
+        "image": {
+          "src": "/images/travel-english.jpg",
+          "alt": "Travel English course collage"
+        },
+        "description": "На курсі будемо вивчати англійську для подорожей та розбирати найпотрібніші життєві ситуації.",
+        "topics": [
+          "transport",
+          "accommodation",
+          "restaurants & cafes",
+          "airport",
+          "asking for directions",
+          "shopping while travelling",
+          "та багато інших корисних тем"
+        ],
+        "note": "А ще — будемо відслідковувати свій прогрес, вести travel journal та підготуємо власний проєкт наприкінці курсу.",
+        "stats": [
+          { "value": "65 topics / 33 lessons", "label": "Програма" },
+          { "value": "2 рази на тиждень", "label": "Графік" },
+          { "value": "4 місяці", "label": "Тривалість" }
+        ],
+        "footer": [
+          "Міні-групи 3–5 людей",
+          "Також можливі індивідуальні заняття"
+        ]
+      }
     ]
   },
   "methodsTitle": "ВИДИ НАВЧАННЯ",
   "methods": ["individual", "pair", "group"],
   "ratesTitle": "ЦІНИ НА КУРСИ",
   "rates": [
-    { "name": "ПАРНІ ЗАНЯТТЯ", "duration": "урок 60 хв.", "price": "від 350 грн", "per": "за урок / з людини", "href": "/pair_classes", "btnLabel": "Детальніше", "featured": false },
-    { "name": "ІНДИВІДУАЛЬНІ ЗАНЯТТЯ", "duration": "урок 55 хв.", "price": "від 450 грн", "per": "за урок", "href": "/individual_classes", "btnLabel": "Детальніше", "featured": true },
-    { "name": "ГРУПОВІ ЗАНЯТТЯ", "duration": "урок 80 хв.", "price": "від 250 грн", "per": "за урок / з людини", "href": "/group_classes", "btnLabel": "Детальніше", "featured": false }
+    {
+      "name": "ПАРНІ ЗАНЯТТЯ",
+      "duration": "урок 60 хв.",
+      "price": "від 190 грн",
+      "per": "за урок / з людини",
+      "href": "/pair_classes",
+      "btnLabel": "Детальніше",
+      "featured": false
+    },
+    {
+      "name": "ІНДИВІДУАЛЬНІ ЗАНЯТТЯ",
+      "duration": "урок 55 хв.",
+      "price": "від 300 грн",
+      "per": "за урок",
+      "href": "/individual_classes",
+      "btnLabel": "Детальніше",
+      "featured": true
+    },
+    {
+      "name": "ГРУПОВІ ЗАНЯТТЯ",
+      "duration": "урок 80 хв.",
+      "price": "від 150 грн",
+      "per": "за урок / з людини",
+      "href": "/group_classes",
+      "btnLabel": "Детальніше",
+      "featured": false
+    }
   ],
   "teachersTitle": "ВИКЛАДАЧІ",
-  "teachers": ["anastasia", "valeria", "diana", "evgenia", "svitlana"],
+  "teachers": ["anastasia", "valeria", "evgenia", "svitlana"],
   "faqTitle": "ЧАСТІ ПИТАННЯ",
   "faq": [
-    { "question": "Чи можна повернути оплату?", "answer": "Ні, оплата не повертається. Але Ви можете передати свої заняття обраній вами людині." },
-    { "question": "Що відбувається при відміні заняття?", "answer": "При відміні заняття пізніше ніж за 2 години до початку знімається 50% оплати." },
-    { "question": "Як проходять заняття?", "answer": "Заняття проходять онлайн через Zoom, Skype або Teams. Після реєстрації ми надішлемо посилання на урок." },
-    { "question": "Як записатися на пробний урок?", "answer": "Заповніть форму нижче або напишіть нам у Telegram чи Instagram. Перший урок — безкоштовне тестування рівня." }
+    {
+      "question": "Чи можна повернути оплату?",
+      "answer": "Так, ви можете повернути оплату за невикористані заняття. Зв'яжіться з нами через email або Telegram."
+    },
+    {
+      "question": "Як проходять заняття?",
+      "answer": "Заняття проходять онлайн через Zoom, Skype або Teams. Після реєстрації ми надішлемо посилання на урок."
+    },
+    {
+      "question": "Як записатися на пробний урок?",
+      "answer": "Заповніть форму нижче або напишіть нам у Telegram чи Instagram. Перший урок — безкоштовне тестування рівня."
+    }
   ],
   "contact": {
     "title": "ЗВ'ЯЖІТЬСЯ З НАМИ",
