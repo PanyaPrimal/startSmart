@@ -19,6 +19,15 @@
     background-size: clamp(560px, 72vw, 1120px) auto;
     background-position: center 52%;
   }
+  @media (min-width: 1024px) {
+    &--image-graphic {
+      min-height: 560px;
+    }
+    &--image-graphic .hero__bg {
+      background-size: clamp(520px, 66vw, 980px) auto;
+      background-position: center 60%;
+    }
+  }
   &__overlay {
     position: absolute;
     inset: 0;
