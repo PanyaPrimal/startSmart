@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://panyaprimal.github.io',
-  base: '/startSmart/',
+  site: process.env.PAGES_ORIGIN || 'https://startsmartworld.com',
+  base: process.env.PAGES_BASE_PATH || '/',
   build: {
     format: 'file',
   },
