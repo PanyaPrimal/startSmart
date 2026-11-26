@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { url } from '../utils/url';
+
+interface Props extends HTMLAttributes<'img'> {
+  image: { src: string; srcDark?: string; alt?: string };
+}
+const { image, alt = image.alt || '', ...attrs } = Astro.props;
+---
+<img {...attrs} src={url(image.src)} alt={alt} data-image-theme={image.srcDark ? 'light' : undefined} />
+{image.srcDark && <img {...attrs} src={url(image.srcDark)} alt={alt} data-image-theme="dark" />}
+
+<style is:global>
+  :root:not([data-theme="dark"]) [data-image-theme="dark"],
+  :root[data-theme="dark"] [data-image-theme="light"] { display: none; }
+</style>

@@ -2,6 +2,7 @@
 import { getEntry, getCollection } from 'astro:content';
 import V2Layout from '../../layouts/V2Layout.astro';
 import { url } from '../../utils/url';
+import ThemedImage from '../../components/ThemedImage.astro';
 
 const settings = (await getEntry('settings', 'site'))!.data;
 const english = (await getEntry('pages', 'english_school'))!.data;
@@ -11,6 +12,9 @@ const teachers = (await getCollection('teachers')).sort((a, b) => a.data.order -
 
 const year = new Date().getFullYear();
 const issueNumber = 'Nº 002';
+const socialLabel = (href: string) => href.replace(
+  /^https?:\/\/(?:www\.)?(?:t\.me|instagram\.com)\/([\w.]+)\/?(?:\?[^#]*)?$/i, '@$1',
+);
 
 // Pull quote source — grab Svitlana's quote if present, fall back to first quoted teacher
 const quoteTeacher = teachers.find((t) => t.id === 'svitlana') ?? teachers.find((t) => t.data.quote);
@@ -24,7 +28,7 @@ const languageLabels: Record<string, string> = {
   russian: 'RU',
 };
 ---
-<V2Layout title="StartSmart — Мовна студія" description={settings.tagline}>
+<V2Layout title={`${settings.siteName} — Мовна студія`} description={settings.tagline}>
   <!-- =========================================================
        MASTHEAD — magazine header
        ========================================================= -->
@@ -43,7 +47,7 @@ const languageLabels: Record<string, string> = {
     </div>
     <div class="masthead__title-row">
       <a href={url('/v2.html')} class="masthead__title">
-        <span class="masthead__title-main">StartSmart</span>
+        <span class="masthead__title-main">{settings.siteName}</span>
         <span class="masthead__title-sub">— Мовна студія</span>
       </a>
       <nav class="masthead__nav" aria-label="Основна навігація">
@@ -75,7 +79,7 @@ const languageLabels: Record<string, string> = {
       </h1>
 
       <p class="hero__lede" data-reveal>
-        StartSmart — мовна студія з Полтави. Вчимо англійської та польської
+        {settings.siteName} — мовна студія з Полтави. Вчимо англійської та польської
         так, як вчили б близького друга: без муштри, з увагою до живого
         спілкування та повагою до твого часу.
       </p>
@@ -87,11 +91,11 @@ const languageLabels: Record<string, string> = {
         </a>
         <div class="hero__stats">
           <div class="stat">
-            <span class="stat__num">5</span>
+            <span class="stat__num">{teachers.length}</span>
             <span class="stat__label">Викладачів<br />рівня C1–C2</span>
           </div>
           <div class="stat">
-            <span class="stat__num">3</span>
+            <span class="stat__num">{formats.length}</span>
             <span class="stat__label">Формати<br />навчання</span>
           </div>
           <div class="stat">
@@ -229,7 +233,7 @@ const languageLabels: Record<string, string> = {
         return (
           <article class="teacher" data-reveal>
             <div class="teacher__portrait">
-              <img src={url(d.photo.src)} alt={d.photo.alt || d.name} loading="lazy" />
+              <ThemedImage image={d.photo} alt={d.photo.alt || d.name} loading="lazy" />
               <div class="teacher__langs">
                 {langs.map((l) => <span>{l}</span>)}
               </div>
@@ -298,14 +302,14 @@ const languageLabels: Record<string, string> = {
         {settings.socials.telegram && (
           <a class="channel" href={settings.socials.telegram} target="_blank" rel="noopener">
             <span class="channel__label">Telegram</span>
-            <span class="channel__value">@startsmart_world</span>
+            <span class="channel__value">{socialLabel(settings.socials.telegram)}</span>
             <span class="channel__arrow" aria-hidden="true">→</span>
           </a>
         )}
         {settings.socials.instagram && (
           <a class="channel" href={settings.socials.instagram} target="_blank" rel="noopener">
             <span class="channel__label">Instagram</span>
-            <span class="channel__value">@startsmart_world</span>
+            <span class="channel__value">{socialLabel(settings.socials.instagram)}</span>
             <span class="channel__arrow" aria-hidden="true">→</span>
           </a>
         )}
@@ -321,7 +325,7 @@ const languageLabels: Record<string, string> = {
   <footer class="colophon">
     <div class="colophon__row">
       <div class="colophon__brand">
-        <span class="colophon__brand-main">StartSmart</span>
+        <span class="colophon__brand-main">{settings.siteName}</span>
         <span class="colophon__brand-sub">— Мовна студія · Полтава / Online</span>
       </div>
       <div class="colophon__set-in">

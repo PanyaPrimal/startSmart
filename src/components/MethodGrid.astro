@@ -1,6 +1,7 @@
 ---
 import { getEntries, type CollectionEntry } from 'astro:content';
 import { url } from '../utils/url';
+import ThemedImage from './ThemedImage.astro';
 interface Props {
   title?: string;
   formats: CollectionEntry<'pages'>['data']['methods'];
@@ -16,7 +17,7 @@ const entries = await getEntries(formats);
       {entries.map((f) => (
         <div class="method-card">
           {f.data.cardIcon && (
-            <img class="method-card__icon" src={url(f.data.cardIcon.src)} alt={f.data.cardIcon.alt || f.data.shortTitle} />
+            <ThemedImage class="method-card__icon" image={f.data.cardIcon} alt={f.data.cardIcon.alt || f.data.shortTitle} />
           )}
           <h3 class="method-card__title">{f.data.shortTitle}</h3>
           {f.data.cardDescription && <p class="method-card__text">{f.data.cardDescription}</p>}

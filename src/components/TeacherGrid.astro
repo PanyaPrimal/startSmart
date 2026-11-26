@@ -1,6 +1,6 @@
 ---
 import { getEntries, type CollectionEntry } from 'astro:content';
-import { url } from '../utils/url';
+import ThemedImage from './ThemedImage.astro';
 interface Props {
   title?: string;
   teachers: CollectionEntry<'pages'>['data']['teachers'];
@@ -17,9 +17,9 @@ const getInfoLines = (info: string) => info.split('·').map((part) => part.trim(
       {entries.map((t) => (
         <div class="teacher-card">
           <div class="teacher-card__photo-frame">
-            <img
+            <ThemedImage
               class="teacher-card__photo"
-              src={url(t.data.photo.src)}
+              image={t.data.photo}
               alt={t.data.photo.alt || t.data.name}
               style={[
                 t.data.photoScale ? `--teacher-photo-scale:${t.data.photoScale};` : undefined,

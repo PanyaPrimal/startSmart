@@ -7,7 +7,7 @@ const s = (await getEntry('settings', 'site'))!.data;
 <header class="layout__header header" id="top">
   <div class="container">
     <div class="header__inner">
-      <a href={url('/')} class="header__logo">Start<span>Smart</span></a>
+      <a href={url('/')} class="header__logo">{s.siteName === 'StartSmart' ? <>Start<span>Smart</span></> : s.siteName}</a>
       <nav class="header__nav nav">
         <ul class="nav__list">
           {s.nav.map((item) => (

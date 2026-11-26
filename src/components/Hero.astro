@@ -3,16 +3,17 @@ import { url } from '../utils/url';
 interface Props {
   title: string;
   subtitle?: string;
-  image?: { src: string; alt?: string };
+  image?: { src: string; srcDark?: string; alt?: string };
   imageMode?: 'cover' | 'graphic';
   overlay?: 'pink' | 'teal' | 'dark';
   ctaLabel?: string;
   ctaHref?: string;
 }
 const { title, subtitle, image, imageMode = 'cover', overlay = 'pink', ctaLabel, ctaHref } = Astro.props;
+const cssUrl = (src: string) => 'url(' + JSON.stringify(url(src)) + ')';
 ---
 <section class={`hero hero--overlay-${overlay} hero--image-${imageMode}`} id="start">
-  {image && <div class="hero__bg" style={`background-image:url('${url(image.src)}');`}></div>}
+  {image && <div class="hero__bg" style={{ '--hero-image': cssUrl(image.src), '--hero-image-dark': image.srcDark && cssUrl(image.srcDark) }}></div>}
   <div class="hero__overlay"></div>
   <div class="hero__content container">
     <h1 class="hero__title">{title}</h1>

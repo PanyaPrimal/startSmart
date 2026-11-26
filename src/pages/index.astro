@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemedImage from '../components/ThemedImage.astro';
 import { url } from '../utils/url';
 
 const page = (await getEntry('pages', 'home'))!.data;
@@ -8,6 +9,7 @@ const qm = page.quickMenu!;
 ---
 <BaseLayout title={page.title}>
   <section class="quick-menu">
+    {qm.background && <ThemedImage image={qm.background} class="quick-menu__background" alt="" />}
     <img class="quick-menu__deco quick-menu__deco--tl" src={url('/images/GreenHat.png')} alt="" aria-hidden="true" />
     <img class="quick-menu__deco quick-menu__deco--tr" src={url('/images/Hat.png')} alt="" aria-hidden="true" />
     <img class="quick-menu__deco quick-menu__deco--bl" src={url('/images/GreenHat_2.png')} alt="" aria-hidden="true" />

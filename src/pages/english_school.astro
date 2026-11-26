@@ -2,12 +2,12 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import ThemedImage from '../components/ThemedImage.astro';
 import MethodGrid from '../components/MethodGrid.astro';
 import RateGrid from '../components/RateGrid.astro';
 import TeacherGrid from '../components/TeacherGrid.astro';
 import FaqList from '../components/FaqList.astro';
 import ContactSection from '../components/ContactSection.astro';
-import { url } from '../utils/url';
 
 const page = (await getEntry('pages', 'english_school'))!.data;
 ---
@@ -32,10 +32,15 @@ const page = (await getEntry('pages', 'english_school'))!.data;
             {page.about.label && <p class="about__label">{page.about.label}</p>}
             <h2 class="about__title">{page.about.title}</h2>
             {page.about.paragraphs.map((p) => <p class="about__text">{p}</p>)}
+            {page.about.bullets.length > 0 && (
+              <ul class="about__bullets">
+                {page.about.bullets.map((line) => <li><span class="about__tick">✓</span><span>{line}</span></li>)}
+              </ul>
+            )}
           </div>
           {page.about.image && (
             <div class="about__image">
-              <img src={url(page.about.image.src)} alt={page.about.image.alt || ''} />
+              <ThemedImage image={page.about.image} />
             </div>
           )}
         </div>
@@ -59,7 +64,7 @@ const page = (await getEntry('pages', 'english_school'))!.data;
                 tabindex="0"
               >
                 <div class="course-card__media">
-                  <img src={url(course.image.src)} alt={course.image.alt || course.title} />
+                  <ThemedImage image={course.image} alt={course.image.alt || course.title} />
                   <div class="course-card__overlay">
                     <p class="course-card__overlay-description">{course.description}</p>
                     <ul class="course-card__topics">

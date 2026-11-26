@@ -157,6 +157,7 @@ const pages = defineCollection({
     quickMenu: z
       .object({
         title: z.string(),
+        background: image.optional(),
         buttons: z.array(
           z.object({
             label: z.string(),
